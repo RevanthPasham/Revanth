@@ -5,17 +5,20 @@ import { experienceData } from "@/data/experience"
 
 export default function Experience() {
   const [activeIndex, setActiveIndex] = useState(0)
-  const sectionRef = useRef(null)
+  const [visibleItems, setVisibleItems] = useState([])
   const itemRefs = useRef([])
 
-  // Sync timeline with scroll (UNCHANGED)
+  // LEFT TIMELINE ACTIVE DOT (UNCHANGED LOGIC)
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          const index = Number(entry.target.dataset.index)
           if (entry.isIntersecting) {
-            const index = Number(entry.target.dataset.index)
             setActiveIndex(index)
+            setVisibleItems((prev) =>
+              prev.includes(index) ? prev : [...prev, index]
+            )
           }
         })
       },
@@ -29,19 +32,8 @@ export default function Experience() {
     return () => observer.disconnect()
   }, [])
 
-  const scrollToItem = (index) => {
-    itemRefs.current[index]?.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-    })
-  }
-
   return (
-    <section
-      id="experience"
-      ref={sectionRef}
-      className="relative py-32 px-4"
-    >
+    <section id="experience" className="relative py-32 px-4">
       <div className="container mx-auto max-w-7xl">
 
         {/* HEADER */}
@@ -57,25 +49,25 @@ export default function Experience() {
         <div className="grid md:grid-cols-[320px_1fr] gap-16 items-start">
 
           {/* LEFT TIMELINE */}
-          <div className="sticky top-32 hidden md:block">
-            <div className="relative pl-10">
+          <div className="hidden md:block sticky top-0 h-screen">
+            <div className="relative h-full flex">
 
-              {/* LINE — TOUCHES SCREEN SIDE */}
-              <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary via-accent to-primary/30" />
+              {/* CENTERED LINE (FULL SCREEN HEIGHT) */}
+              <div className="relative w-12 flex justify-center">
+                <div className="w-[2px] h-screen bg-gradient-to-b from-primary via-accent to-primary/30" />
+              </div>
 
-              <div className="space-y-10">
+              {/* DOTS + TEXT */}
+              <div className="space-y-10 ml-6 pt-32">
                 {experienceData.map((exp, index) => (
-                  <button
-                    key={index}
-                    onClick={() => scrollToItem(index)}
-                    className="flex items-center gap-4 text-left group w-full"
-                  >
+                  <div key={index} className="flex items-center gap-4">
+
                     {/* DOT */}
                     <div
                       className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
                         activeIndex === index
                           ? "bg-primary border-primary scale-110 shadow-lg shadow-primary/40"
-                          : "border-muted bg-background group-hover:border-primary/60"
+                          : "border-muted bg-background"
                       }`}
                     >
                       <div
@@ -85,7 +77,7 @@ export default function Experience() {
                       />
                     </div>
 
-                    {/* LEFT TEXT */}
+                    {/* TEXT */}
                     <div>
                       <p
                         className={`text-sm font-semibold ${
@@ -100,20 +92,26 @@ export default function Experience() {
                         {exp.role}
                       </p>
                     </div>
-                  </button>
+
+                  </div>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* RIGHT CONTENT — NO BOX */}
+          {/* RIGHT CONTENT (ANIMATED FROM RIGHT) */}
           <div className="space-y-32">
             {experienceData.map((exp, index) => (
               <div
                 key={index}
                 ref={(el) => (itemRefs.current[index] = el)}
                 data-index={index}
-                className="scroll-mt-40"
+                className={`scroll-mt-40 transition-all duration-700 ease-out
+                  ${
+                    visibleItems.includes(index)
+                      ? "opacity-100 translate-x-0"
+                      : "opacity-0 translate-x-16"
+                  }`}
               >
                 <div className="space-y-6 pb-20 border-b border-muted/20">
 
@@ -136,10 +134,7 @@ export default function Experience() {
 
                   <ul className="space-y-3">
                     {exp.achievements.map((item, i) => (
-                      <li
-                        key={i}
-                        className="flex gap-3 text-muted-foreground"
-                      >
+                      <li key={i} className="flex gap-3 text-muted-foreground">
                         <span className="w-2 h-2 bg-primary rounded-full mt-2" />
                         {item}
                       </li>
