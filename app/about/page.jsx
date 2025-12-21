@@ -6,7 +6,6 @@ import { experienceData } from "@/data/about"
 import { FaLinkedin, FaGithub, FaTwitter, FaEnvelope } from "react-icons/fa"
 
 export default function AboutPage() {
-  /* ---------------- STATE ---------------- */
   const [activeIndex, setActiveIndex] = useState(0)
   const [visibleItems, setVisibleItems] = useState([])
   const [aboutVisible, setAboutVisible] = useState(false)
@@ -14,7 +13,7 @@ export default function AboutPage() {
   const aboutRef = useRef(null)
   const itemRefs = useRef([])
 
-  /* ---------------- ABOUT ANIMATION ---------------- */
+  /* ---------------- ABOUT VISIBILITY ---------------- */
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => entry.isIntersecting && setAboutVisible(true),
@@ -58,11 +57,11 @@ export default function AboutPage() {
         ref={aboutRef}
         className="py-32 px-4 scroll-mt-28"
       >
-        <div className="max-w-7xl mx-auto grid md:grid-cols-[420px_1fr] gap-20 items-center">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-[420px_1fr] gap-20 items-center text-center md:text-left">
 
           {/* IMAGE */}
           <div
-            className={`transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)]
+            className={`mx-auto md:mx-0 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)]
             ${aboutVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-16"}`}
           >
             <p className="text-sm tracking-widest text-muted-foreground mb-4">
@@ -70,13 +69,13 @@ export default function AboutPage() {
             </p>
 
             <div className="rounded-2xl overflow-hidden border-2 border-purple-500/60 shadow-[0_0_40px_rgba(168,85,247,0.35)]">
-              <Image
-                src="/me.jpg"
-                alt="Rajesh"
-                width={420}
-                height={520}
-                className="object-cover"
-              />
+             <Image
+              src="/me.jpg"
+              alt="Rajesh"
+               width={360}
+              height={460}
+                className="object-cover mx-auto max-w-[280px] md:max-w-none"
+/>
             </div>
           </div>
 
@@ -90,7 +89,7 @@ export default function AboutPage() {
               <span className="text-purple-500">Rajesh</span>
             </h1>
 
-            <div className="space-y-5 text-muted-foreground text-lg leading-7 max-w-[640px]">
+            <div className="space-y-5 text-muted-foreground text-lg leading-7 max-w-[640px] mx-auto md:mx-0">
               <p>
                 I&apos;m Talagana Rajesh, a passionate web developer focused on
                 building responsive, accessible, and performance-driven websites
@@ -107,15 +106,15 @@ export default function AboutPage() {
             </div>
 
             {/* SOCIAL ICONS */}
-            <div className="flex gap-5 mt-6 text-xl text-muted-foreground">
+            <div className="flex justify-center md:justify-start gap-5 mt-6 text-xl text-muted-foreground">
               <FaLinkedin className="hover:text-purple-500 transition" />
               <FaGithub className="hover:text-purple-500 transition" />
               <FaTwitter className="hover:text-purple-500 transition" />
               <FaEnvelope className="hover:text-purple-500 transition" />
             </div>
 
-            {/* TAG BUTTONS */}
-            <div className="flex gap-4 mt-10">
+            {/* TAGS */}
+            <div className="flex justify-center md:justify-start gap-4 mt-10 flex-wrap">
               <span className="px-6 py-2 rounded-full border border-muted hover:border-purple-500 transition">
                 I Lift
               </span>
@@ -127,7 +126,6 @@ export default function AboutPage() {
               </span>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -150,11 +148,11 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-[280px_1fr] gap-20 items-start">
 
-            {/* LEFT TIMELINE */}
+            {/* DESKTOP TIMELINE */}
             <div className="hidden md:block sticky top-0 h-screen">
               <div className="relative h-full flex">
                 <div className="relative w-12 flex justify-center">
-                  <div className="w-[2px] h-screen bg-gradient-to-b from-primary via-accent to-primary/30" />
+                  <div className="w-[2px] h-screen bg-gradient-to-b from-purple-500 via-purple-400 to-purple-500/30" />
                 </div>
 
                 <div className="space-y-10 ml-6 pt-32">
@@ -163,7 +161,7 @@ export default function AboutPage() {
                       <div
                         className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
                           activeIndex === index
-                            ? "bg-primary border-primary scale-110 shadow-lg shadow-primary/40"
+                            ? "bg-purple-500 border-purple-500 scale-110 shadow-lg shadow-purple-500/40"
                             : "border-muted bg-background"
                         }`}
                       >
@@ -175,11 +173,7 @@ export default function AboutPage() {
                       </div>
 
                       <div>
-                        <p className={`text-sm font-semibold ${
-                          activeIndex === index
-                            ? "text-foreground"
-                            : "text-muted-foreground"
-                        }`}>
+                        <p className="text-sm font-semibold">
                           {exp.date}
                         </p>
                         <p className="text-xs text-muted-foreground">
@@ -193,20 +187,29 @@ export default function AboutPage() {
             </div>
 
             {/* RIGHT CONTENT */}
-            <div className="space-y-32 pt-32">
+            <div className="space-y-20 pt-20 md:pt-32">
               {experienceData.map((exp, index) => (
                 <div
                   key={index}
                   ref={(el) => (itemRefs.current[index] = el)}
                   data-index={index}
-                  className={`scroll-mt-40 transform transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)]
+                  className={`relative pl-10 md:pl-0 scroll-mt-40 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)]
                   ${
                     visibleItems.includes(index)
                       ? "opacity-100 translate-x-0"
                       : "opacity-0 translate-x-16"
                   }`}
                 >
-                  <div className="space-y-6 pb-20 border-b border-muted/20 max-w-[640px]">
+                  {/* MOBILE TIMELINE */}
+                  <div className="md:hidden absolute left-3 top-0 bottom-0 flex flex-col items-center">
+                    <div className="w-3 h-3 rounded-full bg-purple-500 mt-2" />
+                    <div className="w-[2px] flex-1 bg-purple-500/40" />
+                  </div>
+
+                  <div className="space-y-4 pb-16 border-b border-muted/20 max-w-[640px]">
+                    <p className="text-sm text-purple-400 font-semibold">
+                      {exp.date}
+                    </p>
                     <h3 className="text-3xl md:text-4xl font-bold">
                       {exp.role}
                     </h3>
