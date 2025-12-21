@@ -9,60 +9,72 @@ export default function Navbar() {
 
   const [active, setActive] = useState("home")
   const [mobileOpen, setMobileOpen] = useState(false)
-  const manualNav = useRef(false) // 🔑 IMPORTANT
 
   const navRef = useRef(null)
   const indicatorRef = useRef(null)
   const itemRefs = useRef({})
 
   const menuItems = [
-    { id: "home", label: "Home", route: "/" },
-    { id: "projects", label: "Projects", route: "/#projects" },
-    { id: "about", label: "About", route: "/about" },
-    { id: "experience", label: "Experience", route: "/experience" },
-    { id: "contact", label: "Contact", route: "/contact" },
+    { id: "home", label: "Home", type: "page", route: "/" },
+    { id: "projects", label: "Projects", type: "section", target: "projects" },
+    { id: "about", label: "About", type: "page", route: "/about" },
+    { id: "experience", label: "Experience", type: "page", route: "/experience" },
+    { id: "contact", label: "Contact", type: "page", route: "/contact" },
   ]
 
-  /* ================= NAVIGATION ================= */
-  const navigate = (item) => {
-    manualNav.current = true       // 🔒 lock slider
-    setActive(item.id)
-    setMobileOpen(false)
+  /* ================= ROUTE → ACTIVE ================= */
+  useEffect(() => {
+    if (pathname === "/") setActive("home")
+    else if (pathname === "/about") setActive("about")
+    else if (pathname === "/experience") setActive("experience")
+    else if (pathname === "/contact") setActive("contact")
+  }, [pathname])
 
-    if (item.route.startsWith("/#")) {
-      if (pathname !== "/") {
-        router.push(item.route)
+  /* ================= PROJECTS SECTION DETECT ================= */
+  useEffect(() => {
+    if (pathname !== "/") return
+
+    const onScroll = () => {
+      const el = document.getElementById("projects")
+      if (!el) return
+
+      const rect = el.getBoundingClientRect()
+      if (rect.top <= 120 && rect.bottom >= 120) {
+        setActive("projects")
       } else {
-        setTimeout(() => {
-          document
-            .getElementById(item.route.replace("/#", ""))
-            ?.scrollIntoView({ behavior: "smooth" })
-
-          // 🔓 unlock after scroll settles
-          setTimeout(() => {
-            manualNav.current = false
-          }, 400)
-        }, 50)
+        setActive("home")
       }
-    } else {
+    }
+
+    window.addEventListener("scroll", onScroll)
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [pathname])
+
+  /* ================= NAVIGATE ================= */
+  const navigate = (item) => {
+    setMobileOpen(false) // ✅ ALWAYS CLOSE MENU
+
+    if (item.type === "page") {
       router.push(item.route)
+      return
+    }
+
+    // section (projects)
+    if (pathname !== "/") {
+      router.push("/")
       setTimeout(() => {
-        manualNav.current = false
+        document
+          .getElementById(item.target)
+          ?.scrollIntoView({ behavior: "smooth" })
       }, 200)
+    } else {
+      document
+        .getElementById(item.target)
+        ?.scrollIntoView({ behavior: "smooth" })
     }
   }
 
-  /* ================= ACTIVE FROM ROUTE ================= */
-  useEffect(() => {
-    if (manualNav.current) return
-
-    if (pathname === "/") setActive("home")
-    if (pathname === "/about") setActive("about")
-    if (pathname === "/experience") setActive("experience")
-    if (pathname === "/contact") setActive("contact")
-  }, [pathname])
-
-  /* ================= SLIDER POSITION ================= */
+  /* ================= SLIDER ================= */
   useEffect(() => {
     const activeEl = itemRefs.current[active]
     const navEl = navRef.current
@@ -70,29 +82,24 @@ export default function Navbar() {
 
     if (!activeEl || !navEl || !indicator) return
 
-    const itemRect = activeEl.getBoundingClientRect()
+    const elRect = activeEl.getBoundingClientRect()
     const navRect = navEl.getBoundingClientRect()
 
-    const left =
-      itemRect.left - navRect.left + itemRect.width / 2 - 12
-
-    indicator.style.left = `${left}px`
+    indicator.style.left =
+      `${elRect.left - navRect.left + elRect.width / 2 - 12}px`
   }, [active])
 
   return (
     <nav className="fixed top-10 left-0 right-0 z-50">
-      <div className="relative max-w-7xl mx-auto flex items-center justify-between px-10">
+      <div className="relative max-w-7xl mx-auto flex items-center justify-between px-6">
 
         {/* LOGO */}
         <button
           onClick={() => {
-            manualNav.current = true
-            setActive("home")
+            setMobileOpen(false)
             router.push("/")
-            setTimeout(() => (manualNav.current = false), 200)
           }}
-          className="ml-4 text-white text-lg font-semibold
-          focus:outline-none focus-visible:outline-none"
+          className="text-white font-semibold text-lg"
         >
           TR
         </button>
@@ -101,18 +108,15 @@ export default function Navbar() {
         <div className="absolute left-1/2 -translate-x-1/2 hidden md:block">
           <div
             ref={navRef}
-            className="relative flex items-center gap-8
-            px-10 py-3 rounded-full
-            bg-white/5 backdrop-blur-xl
+            className="relative flex items-center gap-8 px-10 py-3
+            rounded-full bg-white/5 backdrop-blur-xl
             border border-white/10 shadow-xl"
           >
-            {/* SINGLE SLIDER */}
             <span
               ref={indicatorRef}
-              className="absolute -top-1
-              w-6 h-[3px] rounded-full bg-white
-              shadow-[0_0_10px_rgba(255,255,255,0.9)]
-              transition-all duration-500 ease-out"
+              className="absolute -top-1 w-6 h-[3px]
+              rounded-full bg-white
+              transition-all duration-300"
             />
 
             {menuItems.map((item) => (
@@ -120,9 +124,7 @@ export default function Navbar() {
                 key={item.id}
                 ref={(el) => (itemRefs.current[item.id] = el)}
                 onClick={() => navigate(item)}
-                className={`text-sm font-medium transition-colors duration-300
-                  focus:outline-none focus:ring-0
-                  focus-visible:outline-none focus-visible:ring-0
+                className={`text-sm font-medium transition
                   ${
                     active === item.id
                       ? "text-white"
@@ -136,37 +138,45 @@ export default function Navbar() {
         </div>
 
         {/* ================= MOBILE ================= */}
-        <div className="md:hidden mr-4">
+        <div className="md:hidden">
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="text-white text-xl
-            focus:outline-none focus-visible:outline-none"
+            className="text-white text-2xl"
           >
             ☰
           </button>
 
           {mobileOpen && (
-            <div className="absolute right-4 mt-4 w-56
-              rounded-2xl bg-white/5 backdrop-blur-xl
-              border border-white/10 shadow-2xl overflow-hidden">
-              {menuItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => navigate(item)}
-                  className={`w-full text-left px-5 py-3 text-sm transition
-                    ${
-                      active === item.id
-                        ? "bg-white/10 text-white"
-                        : "text-white/60 hover:bg-white/5"
-                    }`}
-                >
-                  {item.label}
+            <div className="absolute right-4 mt-4 w-64 rounded-2xl
+              bg-black/90 backdrop-blur-xl border border-white/10
+              shadow-2xl overflow-hidden">
+
+              <div className="flex flex-col py-3">
+                {menuItems.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => navigate(item)}
+                    className={`px-6 py-3 text-left text-sm transition
+                      ${
+                        active === item.id
+                          ? "text-white bg-white/10"
+                          : "text-white/70 hover:bg-white/5"
+                      }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* OPTIONAL BUTTON */}
+              <div className="p-4">
+                <button className="w-full rounded-full bg-white/10 text-white py-2 text-sm">
+                  Book a Call
                 </button>
-              ))}
+              </div>
             </div>
           )}
         </div>
-
       </div>
     </nav>
   )
