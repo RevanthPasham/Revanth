@@ -1,105 +1,162 @@
 "use client"
 
+import { useState } from "react"
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa"
 
-const Contact = () => {
-  return (
-    <section id="contact" className="min-h-screen bg-black text-gray-100 px-4">
-      <div className="max-w-6xl mx-auto py-16">
+export default function ContactPage() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: ""
+  })
 
-        <p className="text-center text-sm text-gray-400 mb-10">
-          Feel free to reach out, I&apos;ll get back to you soon.
+  const [status, setStatus] = useState("idle") // idle | loading | success | error
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setStatus("loading")
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form)
+      })
+
+      const data = await res.json()
+
+      if (data.success) {
+        setStatus("success")
+        setForm({ name: "", email: "", message: "" })
+      } else {
+        setStatus("error")
+      }
+    } catch (err) {
+      setStatus("error")
+    }
+  }
+
+  return (
+    <section className="min-h-screen bg-black text-gray-100 px-4">
+      <div className="max-w-6xl mx-auto py-20">
+
+        <p className="text-center text-sm text-gray-400 mb-12">
+          Feel free to reach out — I&apos;ll get back to you soon.
         </p>
 
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-10 lg:grid-cols-2">
 
-          {/* ================= LEFT CARD ================= */}
-          <div className="bg-[#111111] rounded-2xl p-8 border border-gray-800">
+          {/* LEFT SIDE */}
+          <div className="bg-[#111111] border border-gray-800 rounded-2xl p-8">
             <h2 className="text-2xl font-semibold text-yellow-400 mb-4">
               Let&apos;s Connect
             </h2>
 
-            <p className="text-gray-400 text-sm mb-8">
-              Ready to start your project? Reach out through any of these channels.
+            <p className="text-sm text-gray-400 mb-8">
+              Reach me through social platforms or send a direct message.
             </p>
-
-            <h3 className="text-lg font-semibold mb-4">Follow Me</h3>
 
             <div className="space-y-4">
               <SocialItem
                 icon={<FaInstagram />}
                 title="Instagram"
                 desc="Follow my journey"
+                link="https://www.instagram.com/____r_e_v_a_n_t_h_____?igsh=b3lpN2U2eG5qNnh0&utm_source=qr"
               />
+
               <SocialItem
                 icon={<FaLinkedin />}
                 title="LinkedIn"
-                desc="Professional network"
+                desc="Professional profile"
+                link="https://www.linkedin.com/in/revanth-pasham-5587052b6"
               />
+
               <SocialItem
                 icon={<FaGithub />}
                 title="GitHub"
                 desc="View my projects"
+                link="https://github.com/RevanthPasham"
               />
             </div>
           </div>
 
-          {/* ================= RIGHT FORM (UI ONLY) ================= */}
-          <div className="bg-[#111111] rounded-2xl p-8 border border-gray-800">
+          {/* RIGHT SIDE FORM */}
+          <div className="bg-[#111111] border border-gray-800 rounded-2xl p-8">
             <h2 className="text-2xl font-semibold text-yellow-400 mb-6">
               Send a Message
             </h2>
 
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                value={form.name}
+                onChange={handleChange}
+                required
+                className="w-full bg-[#050505] border border-gray-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-yellow-400"
+              />
 
-              <div>
-                <label className="block text-sm text-gray-300 mb-2">Name</label>
-                <input
-                  type="text"
-                  placeholder="John Doe"
-                  disabled
-                  className="w-full bg-[#050505] border border-gray-800 rounded-lg px-4 py-3 text-sm text-gray-500 cursor-not-allowed"
-                />
-              </div>
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                value={form.email}
+                onChange={handleChange}
+                required
+                className="w-full bg-[#050505] border border-gray-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-yellow-400"
+              />
 
-              <div>
-                <label className="block text-sm text-gray-300 mb-2">Email</label>
-                <input
-                  type="email"
-                  placeholder="john@example.com"
-                  disabled
-                  className="w-full bg-[#050505] border border-gray-800 rounded-lg px-4 py-3 text-sm text-gray-500 cursor-not-allowed"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm text-gray-300 mb-2">Message</label>
-                <textarea
-                  rows="4"
-                  placeholder="Email feature coming soon..."
-                  disabled
-                  className="w-full bg-[#050505] border border-gray-800 rounded-lg px-4 py-3 text-sm text-gray-500 cursor-not-allowed resize-none"
-                />
-              </div>
+              <textarea
+                name="message"
+                rows="4"
+                placeholder="Your Message"
+                value={form.message}
+                onChange={handleChange}
+                required
+                className="w-full bg-[#050505] border border-gray-800 rounded-lg px-4 py-3 text-sm resize-none focus:outline-none focus:border-yellow-400"
+              />
 
               <button
-                type="button"
-                disabled
-                className="bg-gray-700 text-gray-400 px-8 py-3 rounded-lg cursor-not-allowed"
+                type="submit"
+                disabled={status === "loading"}
+                className="bg-yellow-400 text-black px-8 py-3 rounded-lg font-medium hover:bg-yellow-500 transition disabled:opacity-60"
               >
-                Send Message
+                {status === "loading" ? "Sending..." : "Send Message"}
               </button>
 
+              {status === "success" && (
+                <p className="text-green-400 text-sm">
+                  ✅ Message sent successfully!
+                </p>
+              )}
+
+              {status === "error" && (
+                <p className="text-red-400 text-sm">
+                  ❌ Failed to send message. Try again.
+                </p>
+              )}
             </form>
           </div>
+
         </div>
       </div>
     </section>
   )
 }
 
-const SocialItem = ({ icon, title, desc }) => (
-  <div className="flex items-center gap-4 bg-[#151515] px-5 py-4 rounded-xl border border-gray-800 hover:border-yellow-400 transition">
+/* SOCIAL ITEM COMPONENT */
+const SocialItem = ({ icon, title, desc, link }) => (
+  <a
+    href={link}
+    target="_blank"
+    rel="noreferrer"
+    className="flex items-center gap-4 bg-[#151515] px-5 py-4 rounded-xl border border-gray-800 hover:border-yellow-400 transition"
+  >
     <div className="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white text-lg">
       {icon}
     </div>
@@ -107,7 +164,5 @@ const SocialItem = ({ icon, title, desc }) => (
       <p className="font-medium">{title}</p>
       <p className="text-xs text-gray-400">{desc}</p>
     </div>
-  </div>
+  </a>
 )
-
-export default Contact
