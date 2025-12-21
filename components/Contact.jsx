@@ -1,5 +1,7 @@
 "use client"
 
+import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa"
+
 const Contact = () => {
   return (
     <section id="contact" className="min-h-screen bg-black text-gray-100 px-4">
@@ -21,28 +23,24 @@ const Contact = () => {
               Ready to start your project? Reach out through any of these channels.
             </p>
 
-            {/* WhatsApp */}
-            <a
-              href="https://wa.me/919692544587"
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-4 bg-[#151515] hover:bg-[#1f1f1f] transition rounded-xl px-5 py-4 border border-gray-800 mb-10"
-            >
-              <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-white">
-                📞
-              </div>
-              <div>
-                <p className="font-medium">WhatsApp</p>
-                <p className="text-xs text-gray-400">+91 9692544587</p>
-              </div>
-            </a>
-
             <h3 className="text-lg font-semibold mb-4">Follow Me</h3>
 
             <div className="space-y-4">
-              <SocialItem title="Instagram" desc="Follow my journey" />
-              <SocialItem title="LinkedIn" desc="Professional network" />
-              <SocialItem title="YouTube" desc="Watch my content" />
+              <SocialItem
+                icon={<FaInstagram />}
+                title="Instagram"
+                desc="Follow my journey"
+              />
+              <SocialItem
+                icon={<FaLinkedin />}
+                title="LinkedIn"
+                desc="Professional network"
+              />
+              <SocialItem
+                icon={<FaGithub />}
+                title="GitHub"
+                desc="View my projects"
+              />
             </div>
           </div>
 
@@ -100,10 +98,10 @@ const Contact = () => {
   )
 }
 
-const SocialItem = ({ title, desc }) => (
-  <div className="flex items-center gap-4 bg-[#151515] px-5 py-4 rounded-xl border border-gray-800">
-    <div className="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center">
-      🔗
+const SocialItem = ({ icon, title, desc }) => (
+  <div className="flex items-center gap-4 bg-[#151515] px-5 py-4 rounded-xl border border-gray-800 hover:border-yellow-400 transition">
+    <div className="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white text-lg">
+      {icon}
     </div>
     <div>
       <p className="font-medium">{title}</p>

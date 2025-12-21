@@ -3,6 +3,46 @@
 import { useEffect, useRef, useState } from "react"
 import { projectsData } from "@/data/projects"
 
+/* 🔹 TECH ICONS */
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaReact,
+  FaNodeJs,
+  FaGithub,
+  FaJava,
+} from "react-icons/fa"
+import {
+  SiTypescript,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiMongodb,
+  SiExpress,
+  SiFirebase,
+  SiPython,
+  SiPostman,
+} from "react-icons/si"
+
+/* 🔹 ICON MAP (keys must match project.techStack) */
+const techIcons = {
+  HTML: <FaHtml5 className="text-orange-500" />,
+  CSS: <FaCss3Alt className="text-blue-500" />,
+  JavaScript: <FaJs className="text-yellow-400" />,
+  TypeScript: <SiTypescript className="text-blue-400" />,
+  React: <FaReact className="text-cyan-400" />,
+  "Next.js": <SiNextdotjs />,
+  Tailwind: <SiTailwindcss className="text-sky-400" />,
+  NodeJS: <FaNodeJs className="text-green-500" />,
+  Express: <SiExpress />,
+  MongoDB: <SiMongodb className="text-green-600" />,
+  Firebase: <SiFirebase className="text-yellow-400" />,
+  Python: <SiPython className="text-blue-400" />,
+  Java: <FaJava className="text-red-500" />,
+  GitHub: <FaGithub />,
+  Postman: <SiPostman className="text-orange-500" />,
+}
+
 const projectColors = [
   "bg-orange-600",
   "bg-green-700",
@@ -14,7 +54,7 @@ const projectColors = [
 function ProjectCard({ project, index, activeIndex, setActiveIndex }) {
   const ref = useRef(null)
   const [isVisible, setIsVisible] = useState(false)
-  const [showMore, setShowMore] = useState(false) // ✅ FIX
+  const [showMore, setShowMore] = useState(false)
 
   const bgColor = projectColors[index % projectColors.length]
   const isActive = isVisible || activeIndex === index
@@ -40,8 +80,6 @@ function ProjectCard({ project, index, activeIndex, setActiveIndex }) {
       >
         {/* LEFT COLORED BOX */}
         <div className={`relative rounded-[2.5rem] p-10 ${bgColor}`}>
-          
-          {/* TEXT */}
           <p
             className={`text-white text-2xl font-semibold max-w-[85%] mb-8 transition-all duration-700
               ${isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
@@ -50,7 +88,6 @@ function ProjectCard({ project, index, activeIndex, setActiveIndex }) {
             {project.description}
           </p>
 
-          {/* IMAGE */}
           <div
             className={`relative rounded-2xl overflow-hidden transition-all duration-700 delay-200
               ${isActive
@@ -89,14 +126,19 @@ function ProjectCard({ project, index, activeIndex, setActiveIndex }) {
             ))}
           </ul>
 
-          <div className="flex flex-wrap gap-2 pt-2">
+          {/* ✅ TECH STACK WITH ICONS (DESKTOP) */}
+          <div className="flex flex-wrap gap-3 pt-2">
             {project.techStack.map((tech, i) => (
-              <span
+              <div
                 key={i}
-                className="px-4 py-2 rounded-full bg-secondary/60 border border-primary/20 text-sm"
+                className="flex items-center gap-2 px-4 py-2 rounded-full
+                           bg-secondary/60 border border-primary/20 text-sm"
               >
-                {tech}
-              </span>
+                <span className="text-lg">
+                  {techIcons[tech]}
+                </span>
+                <span>{tech}</span>
+              </div>
             ))}
           </div>
         </div>
@@ -118,18 +160,22 @@ function ProjectCard({ project, index, activeIndex, setActiveIndex }) {
           {project.description}
         </p>
 
+        {/* ✅ TECH STACK WITH ICONS (MOBILE) */}
         <div className="flex flex-wrap gap-2 mb-3">
           {project.techStack.map((tech, i) => (
-            <span
+            <div
               key={i}
-              className="px-3 py-1 rounded-full bg-black/20 text-xs text-white"
+              className="flex items-center gap-2 px-3 py-1 rounded-full
+                         bg-black/20 text-xs text-white"
             >
-              {tech}
-            </span>
+              <span className="text-base">
+                {techIcons[tech]}
+              </span>
+              <span>{tech}</span>
+            </div>
           ))}
         </div>
 
-        {/* SHOW MORE */}
         <button
           onClick={() => setShowMore(!showMore)}
           className="text-sm text-white underline mb-3"
@@ -137,18 +183,11 @@ function ProjectCard({ project, index, activeIndex, setActiveIndex }) {
           {showMore ? "Show less ↑" : "Show more ↓"}
         </button>
 
-        {/* EXPANDABLE CONTENT */}
         <div
           className={`overflow-hidden transition-all duration-700 ease-in-out
             ${showMore ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"}
           `}
         >
-          <p className="text-sm text-white/90 mb-3">
-            Developed a full-fledged online marketplace for agricultural machinery.
-            The platform allows sellers to list equipment and enables farmers to browse,
-            explore, and purchase machinery with ease.
-          </p>
-
           <h4 className="text-sm font-semibold text-white mb-2">
             Key Features:
           </h4>
@@ -164,7 +203,8 @@ function ProjectCard({ project, index, activeIndex, setActiveIndex }) {
           href={project.liveLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 w-full flex items-center justify-center gap-2 rounded-xl bg-black/20 text-white py-3 font-medium"
+          className="mt-4 w-full flex items-center justify-center gap-2 rounded-xl
+                     bg-black/20 text-white py-3 font-medium"
         >
           View Project →
         </a>
