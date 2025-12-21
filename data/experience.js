@@ -1,62 +1,94 @@
 export const experienceData = [
   {
-    date: "2023 — Present",
-    role: "Senior Full Stack Developer",
-    organization: "TechCorp Solutions",
-    location: "San Francisco, CA",
+    id: 1,
+    company: "DealsOfAgro",
+    role: "Full-Stack Developer",
+    duration: "April 2025 – Present",
+    location: "Odisha, India",
+    logo: "/logos/dealsofagro.png",
+
     description:
-      "Leading the development of enterprise-grade web applications, architecting scalable solutions, and mentoring junior developers in modern web technologies.",
-    achievements: [
-      "Architected and deployed a microservices-based platform serving 2M+ active users",
-      "Reduced application load time by 60% through performance optimization",
-      "Implemented CI/CD pipeline reducing deployment time from hours to minutes",
-      "Led a team of 5 developers in agile development practices",
+      "At DealsOfAgro, I’m pioneering the development of a comprehensive agri-commerce platform that transforms how farmers discover, compare, and purchase agricultural machinery.",
+
+    highlights: [
+      "Architected and developed a scalable Next.js application from scratch",
+      "Designed farmer-friendly UI for low-tech users",
+      "Built backend systems for products, users, and dealers",
+      "Implemented advanced search and filtering for machinery discovery",
+      "Collaborated with stakeholders to align tech with business goals",
     ],
-    techStack: ["React", "Node.js", "TypeScript", "AWS", "Docker", "Kubernetes", "PostgreSQL"],
-  },
-  {
-    date: "2021 — 2023",
-    role: "Full Stack Developer",
-    organization: "StartupHub Inc",
-    location: "Austin, TX",
-    description:
-      "Developed and maintained multiple client projects, focusing on creating responsive web applications and RESTful APIs for various industries.",
-    achievements: [
-      "Built 15+ production-ready web applications for diverse clients",
-      "Integrated third-party APIs including payment gateways and social media platforms",
-      "Collaborated with designers to implement pixel-perfect UI components",
-      "Contributed to open-source projects and internal component library",
+
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+      "Firebase",
+      "Vercel",
     ],
-    techStack: ["React", "Express", "MongoDB", "Redis", "Stripe", "Tailwind CSS"],
+
+    images: [
+      "/preview/deals/home.png",
+      "/preview/deals/product.png",
+      "/preview/deals/listing.png",
+      "/preview/deals/cart.png",
+    ],
+
+    website: "https://dealsofagro.com",
   },
+
   {
-    date: "2020 — 2021",
-    role: "Frontend Developer",
-    organization: "Digital Agency Co",
+    id: 2,
+    company: "AgroTech Labs",
+    role: "Frontend Engineer",
+    duration: "Jan 2024 – Mar 2025",
     location: "Remote",
+    logo: "/logos/agrotech.png",
+
     description:
-      "Specialized in creating engaging user interfaces and interactive web experiences for marketing campaigns and corporate websites.",
-    achievements: [
-      "Developed landing pages with 30%+ conversion rate improvement",
-      "Created reusable component library used across 20+ projects",
-      "Implemented accessibility standards (WCAG 2.1 AA compliance)",
-      "Optimized SEO resulting in 50% increase in organic traffic",
+      "Worked on agriculture-focused SaaS dashboards, improving usability, performance, and accessibility.",
+
+    highlights: [
+      "Built reusable UI components using React",
+      "Improved Lighthouse performance scores",
+      "Converted Figma designs into production UI",
     ],
-    techStack: ["React", "Vue.js", "SASS", "Webpack", "Figma", "Google Analytics"],
+
+    technologies: ["React", "Tailwind CSS", "JavaScript", "Figma"],
+
+    images: [
+      "/preview/agrotech/dashboard.png",
+      "/preview/agrotech/analytics.png",
+      "/preview/agrotech/reports.png",
+    ],
+
+    website: "#",
   },
+
   {
-    date: "2019 — 2020",
-    role: "Junior Web Developer",
-    organization: "WebDev Studio",
-    location: "New York, NY",
+    id: 3,
+    company: "Freelance",
+    role: "Web Developer",
+    duration: "2023 – 2024",
+    location: "India",
+    logo: "/logos/freelance.png",
+
     description:
-      "Started my professional journey building responsive websites and learning modern web development practices in a collaborative environment.",
-    achievements: [
-      "Contributed to 10+ client websites using HTML, CSS, and JavaScript",
-      "Learned React and modern JavaScript frameworks",
-      "Assisted in migrating legacy jQuery codebases to React",
-      "Participated in code reviews and pair programming sessions",
+      "Delivered modern websites and dashboards for startups and individuals with a focus on clean UI and performance.",
+
+    highlights: [
+      "Built portfolio and business websites",
+      "Integrated APIs and authentication",
+      "Added animations and responsive layouts",
     ],
-    techStack: ["HTML", "CSS", "JavaScript", "jQuery", "Bootstrap", "WordPress"],
+
+    technologies: ["Next.js", "React", "CSS", "JavaScript"],
+
+    images: [
+      "/preview/freelance/site1.png",
+      "/preview/freelance/site2.png",
+    ],
+
+    website: "#",
   },
 ]
