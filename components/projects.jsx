@@ -101,83 +101,27 @@ function ProjectCard({ project, index, activeIndex, setActiveIndex }) {
         </div>
       </div>
 
-    {/* ================= MOBILE ================= */}
-<div className={`md:hidden rounded-3xl p-5 ${bgColor}`}>
-  
-  {/* IMAGE */}
-  <img
-    src={project.image}
-    alt={project.title}
-    className="rounded-2xl mb-4"
-  />
-
-  {/* TITLE */}
-  <h3 className="text-xl font-bold text-white mb-1">
-    {project.title}
-  </h3>
-
-  {/* SHORT DESCRIPTION */}
-  <p className="text-sm text-white/90 mb-3">
-    {project.description}
-  </p>
-
-  {/* TECH STACK */}
-  <div className="flex flex-wrap gap-2 mb-3">
-    {project.techStack.map((tech, i) => (
-      <span
-        key={i}
-        className="px-3 py-1 rounded-full bg-black/20 text-xs text-white flex items-center gap-1"
+      {/* ================= MOBILE ================= */}
+      <div
+        className={`md:hidden rounded-3xl p-5 ${bgColor}`}
+        onClick={() => setActiveIndex(index)}
       >
-        {tech}
-      </span>
-    ))}
-  </div>
+        <p
+          className={`text-white text-lg font-semibold mb-4 transition-all duration-700
+            ${isActive ? "opacity-100" : "opacity-0"}
+          `}
+        >
+          {project.description}
+        </p>
 
-  {/* SHOW MORE BUTTON */}
-  <button
-    onClick={() => setShowMore(!showMore)}
-    className="text-sm text-white underline mb-3"
-  >
-    {showMore ? "Show less ↑" : "Show more ↓"}
-  </button>
-
-  {/* EXPANDABLE CONTENT */}
-  <div
-    className={`overflow-hidden transition-all duration-700 ease-in-out
-      ${showMore ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"}
-    `}
-  >
-    {/* LONG DESCRIPTION */}
-    <p className="text-sm text-white/90 mb-3">
-      Developed a full-fledged online marketplace for agricultural machinery.
-      The platform allows sellers to list equipment and enables farmers to browse,
-      explore, and purchase machinery with ease.
-    </p>
-
-    {/* FEATURES */}
-    <div className="mb-4">
-      <h4 className="text-sm font-semibold text-white mb-2">
-        Key Features:
-      </h4>
-      <ul className="space-y-2 text-sm text-white/90">
-        {project.features.map((feature, i) => (
-          <li key={i}>• {feature}</li>
-        ))}
-      </ul>
-    </div>
-  </div>
-
-  {/* VIEW PROJECT */}
-  <a
-    href={project.liveLink}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="mt-4 w-full flex items-center justify-center gap-2 rounded-xl bg-black/20 text-white py-3 font-medium"
-  >
-    View Project →
-  </a>
-</div>
-
+        <img
+          src={project.image}
+          alt={project.title}
+          className={`rounded-2xl transition-all duration-700
+            ${isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
+          `}
+        />
+      </div>
     </div>
   )
 }
