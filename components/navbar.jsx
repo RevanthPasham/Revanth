@@ -1,130 +1,172 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useRouter, usePathname } from "next/navigation"
 
 export default function Navbar() {
   const router = useRouter()
   const pathname = usePathname()
 
-  const [activeSection, setActiveSection] = useState("home")
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [active, setActive] = useState("home")
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const manualNav = useRef(false) // 🔑 IMPORTANT
+
+  const navRef = useRef(null)
+  const indicatorRef = useRef(null)
+  const itemRefs = useRef({})
 
   const menuItems = [
-    { id: "home", label: "Home" },
-    { id: "projects", label: "Projects" },
-    { id: "about", label: "About" },
-    { id: "experience", label: "Experience" },
-    { id: "contact", label: "Contact" },
+    { id: "home", label: "Home", route: "/" },
+    { id: "projects", label: "Projects", route: "/#projects" },
+    { id: "about", label: "About", route: "/about" },
+    { id: "experience", label: "Experience", route: "/experience" },
+    { id: "contact", label: "Contact", route: "/contact" },
   ]
 
   /* ================= NAVIGATION ================= */
-  const navigate = (id) => {
-    setIsMenuOpen(false)
+  const navigate = (item) => {
+    manualNav.current = true       // 🔒 lock slider
+    setActive(item.id)
+    setMobileOpen(false)
 
-    switch (id) {
-      case "home":
-        router.push("/")
-        setActiveSection("home")
-        break
-
-      case "about":
-        router.push("/about")
-        setActiveSection("about")
-        break
-
-      case "experience":
-        router.push("/experience")
-        setActiveSection("experience")
-        break
-
-      case "contact":
-        router.push("/contact")
-        setActiveSection("contact")
-        break
-
-      case "projects":
-        // projects is still a HOME section
-        if (pathname !== "/") {
-          router.push("/#projects")
-        } else {
+    if (item.route.startsWith("/#")) {
+      if (pathname !== "/") {
+        router.push(item.route)
+      } else {
+        setTimeout(() => {
           document
-            .getElementById("projects")
+            .getElementById(item.route.replace("/#", ""))
             ?.scrollIntoView({ behavior: "smooth" })
-        }
-        setActiveSection("projects")
-        break
 
-      default:
-        break
+          // 🔓 unlock after scroll settles
+          setTimeout(() => {
+            manualNav.current = false
+          }, 400)
+        }, 50)
+      }
+    } else {
+      router.push(item.route)
+      setTimeout(() => {
+        manualNav.current = false
+      }, 200)
     }
   }
 
-  /* ================= ACTIVE STATE FROM ROUTE ================= */
+  /* ================= ACTIVE FROM ROUTE ================= */
   useEffect(() => {
-    if (pathname === "/") setActiveSection("home")
-    if (pathname === "/about") setActiveSection("about")
-    if (pathname === "/experience") setActiveSection("experience")
-    if (pathname === "/contact") setActiveSection("contact")
+    if (manualNav.current) return
+
+    if (pathname === "/") setActive("home")
+    if (pathname === "/about") setActive("about")
+    if (pathname === "/experience") setActive("experience")
+    if (pathname === "/contact") setActive("contact")
   }, [pathname])
 
+  /* ================= SLIDER POSITION ================= */
+  useEffect(() => {
+    const activeEl = itemRefs.current[active]
+    const navEl = navRef.current
+    const indicator = indicatorRef.current
+
+    if (!activeEl || !navEl || !indicator) return
+
+    const itemRect = activeEl.getBoundingClientRect()
+    const navRect = navEl.getBoundingClientRect()
+
+    const left =
+      itemRect.left - navRect.left + itemRect.width / 2 - 12
+
+    indicator.style.left = `${left}px`
+  }, [active])
+
   return (
-    <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+    <nav className="fixed top-10 left-0 right-0 z-50">
+      <div className="relative max-w-7xl mx-auto flex items-center justify-between px-10">
 
-      {/* ================= DESKTOP ================= */}
-      <div className="hidden md:flex items-center gap-2 glass rounded-full px-6 py-3 shadow-2xl">
-        <div className="flex items-center gap-1 relative">
-          {menuItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => navigate(item.id)}
-              className={`relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-500
-                ${
-                  activeSection === item.id
-                    ? "text-white"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-            >
-              {activeSection === item.id && (
-                <span className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full shadow-lg shadow-primary/50 -z-10 animate-pulse-glow" />
-              )}
-              {item.label}
-            </button>
-          ))}
-        </div>
+        {/* LOGO */}
+        <button
+          onClick={() => {
+            manualNav.current = true
+            setActive("home")
+            router.push("/")
+            setTimeout(() => (manualNav.current = false), 200)
+          }}
+          className="ml-4 text-white text-lg font-semibold
+          focus:outline-none focus-visible:outline-none"
+        >
+          TR
+        </button>
 
-        <div className="ml-4 pl-4 border-l border-border">
-          <button className="px-5 py-2 rounded-full bg-gradient-to-r from-primary to-accent text-white text-sm font-medium shadow-lg shadow-primary/30 hover:scale-105 transition">
-            Book a Call
-          </button>
-        </div>
-      </div>
+        {/* ================= DESKTOP ================= */}
+        <div className="absolute left-1/2 -translate-x-1/2 hidden md:block">
+          <div
+            ref={navRef}
+            className="relative flex items-center gap-8
+            px-10 py-3 rounded-full
+            bg-white/5 backdrop-blur-xl
+            border border-white/10 shadow-xl"
+          >
+            {/* SINGLE SLIDER */}
+            <span
+              ref={indicatorRef}
+              className="absolute -top-1
+              w-6 h-[3px] rounded-full bg-white
+              shadow-[0_0_10px_rgba(255,255,255,0.9)]
+              transition-all duration-500 ease-out"
+            />
 
-      {/* ================= MOBILE ================= */}
-      <div className="md:hidden w-full max-w-md">
-        <div className="glass rounded-full px-6 py-3 shadow-2xl flex justify-between items-center">
-          <span className="gradient-text font-semibold">Portfolio</span>
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)}>☰</button>
-        </div>
-
-        {isMenuOpen && (
-          <div className="mt-4 glass rounded-3xl p-4 shadow-2xl">
             {menuItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => navigate(item.id)}
-                className={`w-full text-left px-5 py-3 rounded-xl transition
+                ref={(el) => (itemRefs.current[item.id] = el)}
+                onClick={() => navigate(item)}
+                className={`text-sm font-medium transition-colors duration-300
+                  focus:outline-none focus:ring-0
+                  focus-visible:outline-none focus-visible:ring-0
                   ${
-                    activeSection === item.id
-                      ? "bg-gradient-to-r from-primary to-accent text-white shadow-lg"
-                      : "text-muted-foreground hover:bg-secondary/50"
+                    active === item.id
+                      ? "text-white"
+                      : "text-white/60 hover:text-white"
                   }`}
               >
                 {item.label}
               </button>
             ))}
           </div>
-        )}
+        </div>
+
+        {/* ================= MOBILE ================= */}
+        <div className="md:hidden mr-4">
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="text-white text-xl
+            focus:outline-none focus-visible:outline-none"
+          >
+            ☰
+          </button>
+
+          {mobileOpen && (
+            <div className="absolute right-4 mt-4 w-56
+              rounded-2xl bg-white/5 backdrop-blur-xl
+              border border-white/10 shadow-2xl overflow-hidden">
+              {menuItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => navigate(item)}
+                  className={`w-full text-left px-5 py-3 text-sm transition
+                    ${
+                      active === item.id
+                        ? "bg-white/10 text-white"
+                        : "text-white/60 hover:bg-white/5"
+                    }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
       </div>
     </nav>
   )
