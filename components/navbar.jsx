@@ -13,70 +13,65 @@ export default function Navbar() {
   const menuItems = [
     { id: "home", label: "Home" },
     { id: "projects", label: "Projects" },
-    { id: "experience", label: "Experience" },
     { id: "about", label: "About" },
+    { id: "experience", label: "Experience" },
     { id: "contact", label: "Contact" },
   ]
 
-  /* PAGE + SCROLL HANDLING */
+  /* ================= NAVIGATION ================= */
   const navigate = (id) => {
     setIsMenuOpen(false)
 
-    if (id === "about") {
-      router.push("/about")
-      setActiveSection("about")
-      return
-    }
+    switch (id) {
+      case "home":
+        router.push("/")
+        setActiveSection("home")
+        break
 
-    // Navigate to home first if not already there
-    if (pathname !== "/") {
-      router.push(`/#${id}`)
-      return
-    }
+      case "about":
+        router.push("/about")
+        setActiveSection("about")
+        break
 
-    // Smooth scroll on home page
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      case "experience":
+        router.push("/experience")
+        setActiveSection("experience")
+        break
+
+      case "contact":
+        router.push("/contact")
+        setActiveSection("contact")
+        break
+
+      case "projects":
+        // projects is still a HOME section
+        if (pathname !== "/") {
+          router.push("/#projects")
+        } else {
+          document
+            .getElementById("projects")
+            ?.scrollIntoView({ behavior: "smooth" })
+        }
+        setActiveSection("projects")
+        break
+
+      default:
+        break
     }
   }
 
-  /* ACTIVE SECTION ON SCROLL (HOME PAGE ONLY) */
+  /* ================= ACTIVE STATE FROM ROUTE ================= */
   useEffect(() => {
-    if (pathname !== "/") return
-
-    const handleScroll = () => {
-      const scrollPos = window.scrollY + 120
-
-      for (const item of menuItems) {
-        const el = document.getElementById(item.id)
-        if (!el) continue
-
-        const top = el.offsetTop
-        const height = el.offsetHeight
-
-        if (scrollPos >= top && scrollPos < top + height) {
-          setActiveSection(item.id)
-          break
-        }
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [pathname])
-
-  /* SET ACTIVE PAGE */
-  useEffect(() => {
-    if (pathname === "/about") {
-      setActiveSection("about")
-    }
+    if (pathname === "/") setActiveSection("home")
+    if (pathname === "/about") setActiveSection("about")
+    if (pathname === "/experience") setActiveSection("experience")
+    if (pathname === "/contact") setActiveSection("contact")
   }, [pathname])
 
   return (
     <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
 
-      {/* DESKTOP */}
+      {/* ================= DESKTOP ================= */}
       <div className="hidden md:flex items-center gap-2 glass rounded-full px-6 py-3 shadow-2xl">
         <div className="flex items-center gap-1 relative">
           {menuItems.map((item) => (
@@ -84,9 +79,10 @@ export default function Navbar() {
               key={item.id}
               onClick={() => navigate(item.id)}
               className={`relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-500
-                ${activeSection === item.id
-                  ? "text-white"
-                  : "text-muted-foreground hover:text-foreground"
+                ${
+                  activeSection === item.id
+                    ? "text-white"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
             >
               {activeSection === item.id && (
@@ -104,13 +100,11 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* MOBILE */}
+      {/* ================= MOBILE ================= */}
       <div className="md:hidden w-full max-w-md">
         <div className="glass rounded-full px-6 py-3 shadow-2xl flex justify-between items-center">
           <span className="gradient-text font-semibold">Portfolio</span>
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            ☰
-          </button>
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)}>☰</button>
         </div>
 
         {isMenuOpen && (
@@ -120,9 +114,10 @@ export default function Navbar() {
                 key={item.id}
                 onClick={() => navigate(item.id)}
                 className={`w-full text-left px-5 py-3 rounded-xl transition
-                  ${activeSection === item.id
-                    ? "bg-gradient-to-r from-primary to-accent text-white shadow-lg"
-                    : "text-muted-foreground hover:bg-secondary/50"
+                  ${
+                    activeSection === item.id
+                      ? "bg-gradient-to-r from-primary to-accent text-white shadow-lg"
+                      : "text-muted-foreground hover:bg-secondary/50"
                   }`}
               >
                 {item.label}
@@ -131,7 +126,6 @@ export default function Navbar() {
           </div>
         )}
       </div>
-
     </nav>
   )
 }
