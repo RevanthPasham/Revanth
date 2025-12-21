@@ -5,6 +5,46 @@ import Image from "next/image"
 import { Calendar, MapPin, ExternalLink } from "lucide-react"
 import { experienceData } from "@/data/experience"
 
+/* 🔹 TECH ICONS */
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaReact,
+  FaNodeJs,
+  FaGithub,
+  FaJava,
+} from "react-icons/fa"
+import {
+  SiTypescript,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiMongodb,
+  SiExpress,
+  SiFirebase,
+  SiPython,
+  SiPostman,
+} from "react-icons/si"
+
+/* 🔹 ICON MAP (keys must match your data) */
+const techIcons = {
+  HTML: <FaHtml5 className="text-orange-500" />,
+  CSS: <FaCss3Alt className="text-blue-500" />,
+  JavaScript: <FaJs className="text-yellow-400" />,
+  TypeScript: <SiTypescript className="text-blue-400" />,
+  React: <FaReact className="text-cyan-400" />,
+  "Next.js": <SiNextdotjs />,
+  Tailwind: <SiTailwindcss className="text-sky-400" />,
+  NodeJS: <FaNodeJs className="text-green-500" />,
+  Express: <SiExpress />,
+  MongoDB: <SiMongodb className="text-green-600" />,
+  Firebase: <SiFirebase className="text-yellow-400" />,
+  Python: <SiPython className="text-blue-400" />,
+  Java: <FaJava className="text-red-500" />,
+  GitHub: <FaGithub />,
+  Postman: <SiPostman className="text-orange-500" />,
+}
+
 export default function ExperiencePage() {
   const cardsRef = useRef([])
   const [visible, setVisible] = useState([])
@@ -105,15 +145,22 @@ export default function ExperiencePage() {
                 ))}
               </ul>
 
-              {/* TECHNOLOGIES */}
-              <div className="flex flex-wrap gap-3 mb-10">
+              {/* ✅ TECHNOLOGIES WITH ICONS */}
+              <div className="flex flex-wrap gap-4 mb-10">
                 {exp.technologies.map((tech, i) => (
-                  <span
+                  <div
                     key={i}
-                    className="px-4 py-2 rounded-full border border-border text-sm"
+                    className="flex items-center gap-2 px-4 py-2 rounded-full
+                               border border-border bg-background/50 backdrop-blur
+                               hover:border-primary transition"
                   >
-                    {tech}
-                  </span>
+                    <span className="text-lg">
+                      {techIcons[tech]}
+                    </span>
+                    <span className="text-sm">
+                      {tech}
+                    </span>
+                  </div>
                 ))}
               </div>
 
