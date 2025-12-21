@@ -14,6 +14,7 @@ const projectColors = [
 function ProjectCard({ project, index, activeIndex, setActiveIndex }) {
   const ref = useRef(null)
   const [isVisible, setIsVisible] = useState(false)
+  const [showMore, setShowMore] = useState(false) // ✅ FIX
 
   const bgColor = projectColors[index % projectColors.length]
   const isActive = isVisible || activeIndex === index
@@ -40,7 +41,7 @@ function ProjectCard({ project, index, activeIndex, setActiveIndex }) {
         {/* LEFT COLORED BOX */}
         <div className={`relative rounded-[2.5rem] p-10 ${bgColor}`}>
           
-          {/* TEXT (APPEARS FIRST) */}
+          {/* TEXT */}
           <p
             className={`text-white text-2xl font-semibold max-w-[85%] mb-8 transition-all duration-700
               ${isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
@@ -49,7 +50,7 @@ function ProjectCard({ project, index, activeIndex, setActiveIndex }) {
             {project.description}
           </p>
 
-          {/* IMAGE (APPEARS SECOND) */}
+          {/* IMAGE */}
           <div
             className={`relative rounded-2xl overflow-hidden transition-all duration-700 delay-200
               ${isActive
@@ -65,7 +66,7 @@ function ProjectCard({ project, index, activeIndex, setActiveIndex }) {
           </div>
         </div>
 
-        {/* RIGHT CONTENT (APPEARS LAST FROM RIGHT) */}
+        {/* RIGHT CONTENT */}
         <div
           className={`space-y-6 transition-all duration-700 delay-300
             ${isActive
@@ -102,25 +103,71 @@ function ProjectCard({ project, index, activeIndex, setActiveIndex }) {
       </div>
 
       {/* ================= MOBILE ================= */}
-      <div
-        className={`md:hidden rounded-3xl p-5 ${bgColor}`}
-        onClick={() => setActiveIndex(index)}
-      >
-        <p
-          className={`text-white text-lg font-semibold mb-4 transition-all duration-700
-            ${isActive ? "opacity-100" : "opacity-0"}
-          `}
-        >
-          {project.description}
-        </p>
-
+      <div className={`md:hidden rounded-3xl p-5 ${bgColor}`}>
         <img
           src={project.image}
           alt={project.title}
-          className={`rounded-2xl transition-all duration-700
-            ${isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
-          `}
+          className="rounded-2xl mb-4"
         />
+
+        <h3 className="text-xl font-bold text-white mb-1">
+          {project.title}
+        </h3>
+
+        <p className="text-sm text-white/90 mb-3">
+          {project.description}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mb-3">
+          {project.techStack.map((tech, i) => (
+            <span
+              key={i}
+              className="px-3 py-1 rounded-full bg-black/20 text-xs text-white"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        {/* SHOW MORE */}
+        <button
+          onClick={() => setShowMore(!showMore)}
+          className="text-sm text-white underline mb-3"
+        >
+          {showMore ? "Show less ↑" : "Show more ↓"}
+        </button>
+
+        {/* EXPANDABLE CONTENT */}
+        <div
+          className={`overflow-hidden transition-all duration-700 ease-in-out
+            ${showMore ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"}
+          `}
+        >
+          <p className="text-sm text-white/90 mb-3">
+            Developed a full-fledged online marketplace for agricultural machinery.
+            The platform allows sellers to list equipment and enables farmers to browse,
+            explore, and purchase machinery with ease.
+          </p>
+
+          <h4 className="text-sm font-semibold text-white mb-2">
+            Key Features:
+          </h4>
+
+          <ul className="space-y-2 text-sm text-white/90">
+            {project.features.map((feature, i) => (
+              <li key={i}>• {feature}</li>
+            ))}
+          </ul>
+        </div>
+
+        <a
+          href={project.liveLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 w-full flex items-center justify-center gap-2 rounded-xl bg-black/20 text-white py-3 font-medium"
+        >
+          View Project →
+        </a>
       </div>
     </div>
   )
