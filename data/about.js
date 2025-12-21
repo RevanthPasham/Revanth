@@ -1,8 +1,8 @@
 export const experienceData = [
   {
-    date: "2023 — Present",
-    role: "Senior Full Stack Developer",
-    organization: "TechCorp Solutions",
+    date: "2026 — Present",
+    role: " Mern Stack Developer",
+    organization: "",
     location: "San Francisco, CA",
     description:
       "Leading the development of enterprise-grade web applications, architecting scalable solutions, and mentoring junior developers in modern web technologies.",
@@ -12,41 +12,41 @@ export const experienceData = [
       "Implemented CI/CD pipeline reducing deployment time from hours to minutes",
       "Led a team of 5 developers in agile development practices",
     ],
-    techStack: ["React", "Node.js", "TypeScript", "AWS", "Docker", "Kubernetes", "PostgreSQL"],
+    techStack: ["React", "Node.js", "MOngodb", "Docker", "Vercel", "Docker","TailWind"],
   },
   {
-    date: "2021 — 2023",
-    role: "Full Stack Developer",
+    date: "2024-2025",
+    role: "Ai agents",
     organization: "StartupHub Inc",
     location: "Austin, TX",
     description:
-      "Developed and maintained multiple client projects, focusing on creating responsive web applications and RESTful APIs for various industries.",
+      "Worked with AI Agents using n8n to design and automate intelligent workflows, enabling seamless integration between APIs, AI models, and external services. Built agent-driven automations for decision-making, task orchestration, and real-time data processing.",
     achievements: [
       "Built 15+ production-ready web applications for diverse clients",
       "Integrated third-party APIs including payment gateways and social media platforms",
       "Collaborated with designers to implement pixel-perfect UI components",
       "Contributed to open-source projects and internal component library",
     ],
-    techStack: ["React", "Express", "MongoDB", "Redis", "Stripe", "Tailwind CSS"],
+    techStack: ["n8n","Python","API's"],
   },
   {
-    date: "2020 — 2021",
-    role: "Frontend Developer",
+    date: "2023-2024",
+    role: "Data Structres",
     organization: "Digital Agency Co",
     location: "Remote",
     description:
-      "Specialized in creating engaging user interfaces and interactive web experiences for marketing campaigns and corporate websites.",
+      "Strong understanding and hands-on experience with Data Structures for efficient problem-solving and application optimization.",
     achievements: [
       "Developed landing pages with 30%+ conversion rate improvement",
       "Created reusable component library used across 20+ projects",
       "Implemented accessibility standards (WCAG 2.1 AA compliance)",
       "Optimized SEO resulting in 50% increase in organic traffic",
     ],
-    techStack: ["React", "Vue.js", "SASS", "Webpack", "Figma", "Google Analytics"],
+    techStack: ["Python"],
   },
   {
-    date: "2019 — 2020",
-    role: "Junior Web Developer",
+    date: "2023 — 2024",
+    role: "Frontend Web Developer",
     organization: "WebDev Studio",
     location: "New York, NY",
     description:
@@ -57,6 +57,6 @@ export const experienceData = [
       "Assisted in migrating legacy jQuery codebases to React",
       "Participated in code reviews and pair programming sessions",
     ],
-    techStack: ["HTML", "CSS", "JavaScript", "jQuery", "Bootstrap", "WordPress"],
+    techStack: ["HTML", "CSS", "JavaScript" , "WordPress"],
   },
 ]
