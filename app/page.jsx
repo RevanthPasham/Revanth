@@ -3,6 +3,8 @@
 import Navbar from "@/components/navbar"
 import Hero from "@/components/hero"
 import Projects from "@/components/projects"
+import TechStack from "@/components/TechStack"
+ 
 import Experience from "@/components/experience"
 
 export default function Home() {
@@ -11,6 +13,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Projects />
+      <TechStack />
       <Experience />
     </main>
   )
