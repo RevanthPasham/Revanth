@@ -114,7 +114,7 @@ export default function Navbar() {
       {/* ================= MOBILE NAV ================= */}
       <nav className="fixed top-0 left-0 right-0 z-50 md:hidden px-4 pt-4">
         <div className="flex justify-between items-center">
-          <span className="text-white font-semibold">TR</span>
+          <span className="text-white font-semibold">PR</span>
           <button onClick={() => setMobileOpen(true)} className="text-white text-xl">
             ☰
           </button>
