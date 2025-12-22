@@ -5,7 +5,7 @@ export const experienceData = [
     role: "Mern-Stack Developer",
     duration: "April 2025 – Present",
     location: ".",
-    logo: "/hevenlogo.webp",
+    logo: "/Hevenlogo.webp",
 
     description:
       " Heven is an agri-tech startup focused on revolutionizing Clothing quality access in India through a digital platform that connects users with differnt platforms",
