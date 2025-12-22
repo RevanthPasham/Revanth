@@ -44,10 +44,10 @@ export const experienceData = [
     role: ".",
     duration: "2025",
     location: "Remote",
-    logo: "/",
+    logo: "/sweetbytes.webp",
 
     description:
-      "Worked on agriculture-focused SaaS dashboards, improving usability, performance, and accessibility.",
+      "Worked on A freelance web application with search and Advanced filters.",
 
     highlights: [
       "Built reusable UI components using React",
@@ -58,38 +58,38 @@ export const experienceData = [
     technologies: ["React", "Tailwind CSS", "JavaScript", "Figma"],
 
     images: [
-      "/preview/agrotech/dashboard.png",
-      "/preview/agrotech/analytics.png",
-      "/preview/agrotech/reports.png",
+      "/cake1.webp",
+      "/cake2.webp",
+      "/cake3.webp",
     ],
 
-    website: "#",
+    website: "https://cakef.vercel.app/",
   },
 
-  {
-    id: 3,
-    company: "Freelance",
-    role: "Web Developer",
-    duration: "2023 – 2024",
-    location: "India",
-    logo: "/logos/freelance.png",
+  // {
+  //   id: 3,
+  //   company: "Freelance",
+  //   role: "Web Developer",
+  //   duration: "2023 – 2024",
+  //   location: "India",
+  //   logo: "/logos/freelance.png",
 
-    description:
-      "Delivered modern websites and dashboards for startups and individuals with a focus on clean UI and performance.",
+  //   description:
+  //     "Delivered modern websites and dashboards for startups and individuals with a focus on clean UI and performance.",
 
-    highlights: [
-      "Built portfolio and business websites",
-      "Integrated APIs and authentication",
-      "Added animations and responsive layouts",
-    ],
+  //   highlights: [
+  //     "Built portfolio and business websites",
+  //     "Integrated APIs and authentication",
+  //     "Added animations and responsive layouts",
+  //   ],
 
-    technologies: ["Next.js", "React", "CSS", "JavaScript"],
+  //   technologies: ["Next.js", "React", "CSS", "JavaScript"],
 
-    images: [
-      "/preview/freelance/site1.png",
-      "/preview/freelance/site2.png",
-    ],
+  //   images: [
+  //     "/preview/freelance/site1.png",
+  //     "/preview/freelance/site2.png",
+  //   ],
 
-    website: "#",
-  },
+  //   website: "#",
+  // },
 ]
