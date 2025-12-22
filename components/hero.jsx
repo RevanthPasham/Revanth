@@ -1,5 +1,8 @@
 "use client"
 
+
+import { Typewriter } from "react-simple-typewriter"
+
 import { useState, useEffect, useRef } from "react"
 
 export default function Hero() {
@@ -61,26 +64,44 @@ export default function Hero() {
             onMouseLeave={() => window.innerWidth >= 768 && setShowProfile(false)}
           >
 
-            <div className="space-y-2">
-  <p className="text-xl md:text-2xl text-muted-foreground">
-    Hello, I'm{" "}
-    <span className="font-semibold text-foreground">
-      Revanth Pasham
-    </span>
-  </p>
+               <div className="mt-6 space-y-3">
 
-  <div className="flex flex-wrap gap-3">
-    <span className="px-4 py-1 text-sm rounded-full bg-muted border border-border">
-      MERN Stack Developer
-    </span>
-    <span className="px-4 py-1 text-sm rounded-full bg-muted border border-border">
-      AI Agents Builder
-    </span>
-  </div>
-</div>
+      {/* NAME LINE */}
+      <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
+        Hello, I'm{" "}
+        <span
+          className="inline-flex items-center px-3 sm:px-4 py-1
+                     rounded-full bg-gradient-to-r from-primary/20 to-accent/20
+                     border border-primary/30 font-semibold
+                     text-sm sm:text-base md:text-lg"
+        >
+          Revanth Pasham
+        </span>
+      </p>
 
+      {/* TYPING ROLE */}
+      <p
+        className="
+          min-h-[1.6em]
+          font-mono font-semibold text-sky-400
+          text-lg sm:text-xl md:text-2xl lg:text-3xl
+        "
+      >
+        <Typewriter
+          words={["MERN Stack Developer", "AI Agents Builder"]}
+          loop={0}
+          cursor
+          cursorStyle="|"
+          typeSpeed={70}
+          deleteSpeed={45}
+          delaySpeed={1500}
+        />
+      </p>
+
+    </div>
+   
            
-            {/* Profile Image */}
+            {/* Profile Image
             <div
               className={`transition-all duration-700 ${
                 showProfile
@@ -93,7 +114,7 @@ export default function Hero() {
                 alt="Profile"
                 className="w-28 h-28 md:w-32 md:h-32 rounded-full border-4 border-primary/30 shadow-2xl shadow-primary/30"
               />
-            </div>
+            </div> */}
           </div>
 
           {/* Buttons */}
