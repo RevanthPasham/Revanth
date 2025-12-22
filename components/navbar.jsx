@@ -128,7 +128,7 @@ export default function Navbar() {
 
             {/* HEADER */}
             <div className="flex justify-between items-center mb-4">
-              <span className="text-white font-semibold">TR</span>
+              <span className="text-white font-semibold">PR</span>
               <button
                 onClick={() => setMobileOpen(false)}
                 className="text-white text-xl"
