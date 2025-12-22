@@ -41,8 +41,8 @@ export default function ContactPage() {
   }
 
   return (
-    <section className="min-h-screen bg-black text-gray-100 px-4">
-      <div className="max-w-6xl mx-auto py-20">
+   <section className="min-h-screen bg-black text-gray-100 px-2  pt-6 md:pt-10">
+  <div className="max-w-6xl mx-auto py-10">
 
         <p className="text-center text-sm text-gray-400 mb-12">
           Feel free to reach out — I&apos;ll get back to you soon.
