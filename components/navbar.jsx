@@ -75,7 +75,7 @@ export default function Navbar() {
             }}
             className="text-white text-lg font-semibold"
           >
-            TR
+            PR
           </button>
 
           {/* CENTER NAV */}
@@ -154,9 +154,9 @@ export default function Navbar() {
               ))}
 
               {/* BOOK A CALL */}
-              <button className="w-full mt-4 bg-white/20 text-white py-2 rounded-full text-sm">
+              {/* <button className="w-full mt-4 bg-white/20 text-white py-2 rounded-full text-sm">
                 Book a Call
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
