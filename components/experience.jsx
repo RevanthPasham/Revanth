@@ -106,14 +106,16 @@ export default function ExperiencePage() {
               {/* HEADER */}
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
                 <div className="flex items-center gap-5">
-                  <div className="w-14 h-14 rounded-xl overflow-hidden bg-muted">
-                    <Image
-                      src={exp.logo}
-                      alt={exp.company}
-                      width={56}
-                      height={56}
-                    />
-                  </div>
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-muted flex items-center justify-center overflow-hidden">
+  <Image
+    src={exp.logo}
+    alt={exp.company}
+    width={64}
+    height={64}
+    className="object-contain w-full h-full p-2"
+    sizes="(max-width: 768px) 56px, 64px"
+  />
+</div>
                   <div>
                     <h2 className="text-2xl font-bold">{exp.company}</h2>
                     <p className="text-primary">{exp.role}</p>

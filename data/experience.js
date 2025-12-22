@@ -1,11 +1,11 @@
 export const experienceData = [
   {
     id: 1,
-    company: "DealsOfAgro",
-    role: "Full-Stack Developer",
+    company: "Heven",
+    role: "Mern-Stack Developer",
     duration: "April 2025 – Present",
-    location: "Odisha, India",
-    logo: "/logos/dealsofagro.png",
+    location: "",
+    logo: "/hevenlogo.webp",
 
     description:
       "At DealsOfAgro, I’m pioneering the development of a comprehensive agri-commerce platform that transforms how farmers discover, compare, and purchase agricultural machinery.",
