@@ -60,14 +60,26 @@ export default function Hero() {
             onMouseEnter={() => window.innerWidth >= 768 && setShowProfile(true)}
             onMouseLeave={() => window.innerWidth >= 768 && setShowProfile(false)}
           >
-            <p className="text-xl md:text-2xl text-muted-foreground">
-              Hello, I'm{" "}
-              <span className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30 font-semibold">
-                Alex Morgan
-              </span>{" "}
-              — A Full Stack Developer
-            </p>
 
+            <div className="space-y-2">
+  <p className="text-xl md:text-2xl text-muted-foreground">
+    Hello, I'm{" "}
+    <span className="font-semibold text-foreground">
+      Revanth Pasham
+    </span>
+  </p>
+
+  <div className="flex flex-wrap gap-3">
+    <span className="px-4 py-1 text-sm rounded-full bg-muted border border-border">
+      MERN Stack Developer
+    </span>
+    <span className="px-4 py-1 text-sm rounded-full bg-muted border border-border">
+      AI Agents Builder
+    </span>
+  </div>
+</div>
+
+           
             {/* Profile Image */}
             <div
               className={`transition-all duration-700 ${
