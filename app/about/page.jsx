@@ -1,30 +1,14 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import Image from "next/image"
 import { experienceData } from "@/data/about"
-import { FaLinkedin, FaGithub, FaTwitter, FaEnvelope } from "react-icons/fa"
 
-export default function AboutPage() {
+export default function Page() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [visibleItems, setVisibleItems] = useState([])
-  const [aboutVisible, setAboutVisible] = useState(false)
-
-  const aboutRef = useRef(null)
   const itemRefs = useRef([])
 
-  /* ---------------- ABOUT VISIBILITY ---------------- */
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => entry.isIntersecting && setAboutVisible(true),
-      { threshold: 0.3 }
-    )
-
-    if (aboutRef.current) observer.observe(aboutRef.current)
-    return () => observer.disconnect()
-  }, [])
-
-  /* ---------------- EXPERIENCE SCROLL SYNC ---------------- */
+  /* ---------------- INTERSECTION OBSERVER ---------------- */
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -38,10 +22,7 @@ export default function AboutPage() {
           }
         })
       },
-      {
-        rootMargin: "-40% 0px -40% 0px",
-        threshold: 0.1,
-      }
+      { rootMargin: "-40% 0px -40% 0px", threshold: 0.1 }
     )
 
     itemRefs.current.forEach((el) => el && observer.observe(el))
@@ -50,132 +31,44 @@ export default function AboutPage() {
 
   return (
     <main className="pt-32">
-
-      {/* ================= ABOUT SECTION ================= */}
-      <section
-        id="about"
-        ref={aboutRef}
-        className="py-32 px-4 scroll-mt-28"
-      >
-        <div className="max-w-7xl mx-auto grid md:grid-cols-[420px_1fr] gap-20 items-center text-center md:text-left">
-
-          {/* IMAGE */}
-          <div
-            className={`mx-auto md:mx-0 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)]
-            ${aboutVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-16"}`}
-          >
-            <p className="text-sm tracking-widest text-muted-foreground mb-4">
-              MORE ABOUT ME
-            </p>
-
-            <div className="rounded-2xl overflow-hidden border-2 border-purple-500/60 shadow-[0_0_40px_rgba(168,85,247,0.35)]">
-             <Image
-              src="/me.jpg"
-              alt="Rajesh"
-               width={360}
-              height={460}
-                className="object-cover mx-auto max-w-[280px] md:max-w-none"
-/>
-            </div>
-          </div>
-
-          {/* CONTENT */}
-          <div
-            className={`transition-all duration-[1200ms] delay-150 ease-[cubic-bezier(0.22,1,0.36,1)]
-            ${aboutVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-16"}`}
-          >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Hi there! I&apos;m{" "}
-              <span className="text-purple-500">Rajesh</span>
-            </h1>
-
-            <div className="space-y-5 text-muted-foreground text-lg leading-7 max-w-[640px] mx-auto md:mx-0">
-              <p>
-                I&apos;m Talagana Rajesh, a passionate web developer focused on
-                building responsive, accessible, and performance-driven websites
-                using React and Next.js.
-              </p>
-              <p>
-                I love exploring new technologies, especially AI & ML, and
-                integrating them into meaningful real-world applications.
-              </p>
-              <p>
-                Every day I work toward becoming a better developer and building
-                things that truly matter.
-              </p>
-            </div>
-
-            {/* SOCIAL ICONS */}
-            <div className="flex justify-center md:justify-start gap-5 mt-6 text-xl text-muted-foreground">
-              <FaLinkedin className="hover:text-purple-500 transition" />
-              <FaGithub className="hover:text-purple-500 transition" />
-              <FaTwitter className="hover:text-purple-500 transition" />
-              <FaEnvelope className="hover:text-purple-500 transition" />
-            </div>
-
-            {/* TAGS */}
-            <div className="flex justify-center md:justify-start gap-4 mt-10 flex-wrap">
-              <span className="px-6 py-2 rounded-full border border-muted hover:border-purple-500 transition">
-                I Lift
-              </span>
-              <span className="px-6 py-2 rounded-full border border-purple-500 text-purple-400 shadow-[0_0_20px_rgba(168,85,247,0.4)]">
-                I Code
-              </span>
-              <span className="px-6 py-2 rounded-full border border-muted hover:border-purple-500 transition">
-                I Vibin&apos;
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= EXPERIENCE SECTION ================= */}
-      <section
-        id="experience"
-        className="relative py-32 px-4 scroll-mt-28"
-      >
+      <section className="relative py-32 px-4">
         <div className="max-w-7xl mx-auto">
 
           {/* HEADER */}
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              <span className="gradient-text">Experience</span>
+              Experience
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+            <p className="text-muted-foreground">
               A timeline of my professional journey
             </p>
           </div>
 
-          <div className="grid md:grid-cols-[280px_1fr] gap-20 items-start">
+          <div className="grid md:grid-cols-[280px_1fr] gap-20">
 
-            {/* DESKTOP TIMELINE */}
+            {/* ================= DESKTOP TIMELINE ================= */}
             <div className="hidden md:block sticky top-0 h-screen">
               <div className="relative h-full flex">
                 <div className="relative w-12 flex justify-center">
-                  <div className="w-[2px] h-screen bg-gradient-to-b from-purple-500 via-purple-400 to-purple-500/30" />
+                  <div className="w-[2px] h-screen bg-purple-500/40" />
                 </div>
 
                 <div className="space-y-10 ml-6 pt-32">
                   {experienceData.map((exp, index) => (
-                    <div key={index} className="flex items-center gap-4">
+                    <div key={index} className="flex gap-4">
                       <div
-                        className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
+                        className={`w-10 h-10 rounded-full border-2 flex items-center justify-center
+                        ${
                           activeIndex === index
-                            ? "bg-purple-500 border-purple-500 scale-110 shadow-lg shadow-purple-500/40"
-                            : "border-muted bg-background"
+                            ? "bg-purple-500 border-purple-500"
+                            : "border-muted"
                         }`}
                       >
-                        <div
-                          className={`w-3 h-3 rounded-full ${
-                            activeIndex === index ? "bg-white" : "bg-muted"
-                          }`}
-                        />
+                        <div className="w-3 h-3 bg-white rounded-full" />
                       </div>
 
                       <div>
-                        <p className="text-sm font-semibold">
-                          {exp.date}
-                        </p>
+                        <p className="text-sm font-semibold">{exp.date}</p>
                         <p className="text-xs text-muted-foreground">
                           {exp.role}
                         </p>
@@ -186,45 +79,96 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* RIGHT CONTENT */}
-            <div className="space-y-20 pt-20 md:pt-32">
+            {/* ================= CONTENT ================= */}
+            <div className="space-y-28">
+
               {experienceData.map((exp, index) => (
                 <div
                   key={index}
                   ref={(el) => (itemRefs.current[index] = el)}
                   data-index={index}
-                  className={`relative pl-10 md:pl-0 scroll-mt-40 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)]
+                  className={`transition-all duration-700
                   ${
                     visibleItems.includes(index)
                       ? "opacity-100 translate-x-0"
-                      : "opacity-0 translate-x-16"
+                      : "opacity-0 translate-x-12"
                   }`}
                 >
-                  {/* MOBILE TIMELINE */}
-                  <div className="md:hidden absolute left-3 top-0 bottom-0 flex flex-col items-center">
-                    <div className="w-3 h-3 rounded-full bg-purple-500 mt-2" />
-                    <div className="w-[2px] flex-1 bg-purple-500/40" />
+
+                  {/* ================= MOBILE : ONLY VERTICAL LINE ================= */}
+                {/* ================= MOBILE ================= */}
+<div className="md:hidden grid grid-cols-[16px_1fr] gap-4">
+
+  {/* LEFT: DOT + LINE */}
+  <div className="flex flex-col items-center">
+    <span className="w-3 h-3 rounded-full bg-purple-500 mb-2" />
+    <span className="w-[2px] h-16 bg-purple-500/70" />
+  </div>
+
+  {/* RIGHT CONTENT */}
+  <div className="space-y-1">
+    {exp.date && (
+      <p className="text-sm text-purple-400 font-semibold">
+        {exp.date}
+      </p>
+    )}
+
+    {exp.role && (
+      <h3 className="text-2xl font-bold">
+        {exp.role}
+      </h3>
+    )}
+
+    {(exp.organization || exp.location) && (
+      <p className="text-sm text-muted-foreground">
+        {exp.organization}
+        {exp.organization && exp.location && " • "}
+        {exp.location}
+      </p>
+    )}
+  </div>
+</div>
+
+
+                  {/* ================= DESCRIPTION (NO LINE) ================= */}
+                  <div className="md:pl-0 pl-6 mt-4 space-y-4 border-b border-muted/20 pb-12 max-w-[640px]">
+
+                    {exp.description && (
+                      <p className="text-muted-foreground leading-7">
+                        {exp.description}
+                      </p>
+                    )}
+
+                    {exp.achievements?.length > 0 && (
+                      <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+                        {exp.achievements.map((point, i) => (
+                          <li key={i}>{point}</li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {exp.techStack?.length > 0 && (
+                      <div className="flex flex-wrap gap-3 pt-2">
+                        {exp.techStack.map((tech, i) => (
+                          <span
+                            key={i}
+                            className="px-4 py-1 text-xs rounded-full border border-muted"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
                   </div>
 
-                  <div className="space-y-4 pb-16 border-b border-muted/20 max-w-[640px]">
-                    <p className="text-sm text-purple-400 font-semibold">
-                      {exp.date}
-                    </p>
-                    <h3 className="text-3xl md:text-4xl font-bold">
-                      {exp.role}
-                    </h3>
-                    <p className="text-muted-foreground text-lg leading-7">
-                      {exp.description}
-                    </p>
-                  </div>
                 </div>
               ))}
-            </div>
 
+            </div>
           </div>
         </div>
       </section>
-
     </main>
   )
 }
