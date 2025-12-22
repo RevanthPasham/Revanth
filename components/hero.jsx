@@ -1,6 +1,6 @@
 "use client"
 
-
+import Link from "next/link"
 import { Typewriter } from "react-simple-typewriter"
 
 import { useState, useEffect, useRef } from "react"
@@ -119,9 +119,16 @@ export default function Hero() {
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-            <button className="px-8 py-4 rounded-full bg-gradient-to-r from-primary to-accent text-white font-semibold hover:scale-105 transition">
-              Let's Connect
-            </button>
+             <Link href="/contact" className="inline-block">
+  <button
+    type="button"
+    className="relative z-20 px-8 py-4 rounded-full 
+               bg-gradient-to-r from-primary to-accent 
+               text-white font-semibold hover:scale-105 transition"
+  >
+    Let&apos;s Connect
+  </button>
+</Link>
           </div>
         </div>
       </div>
