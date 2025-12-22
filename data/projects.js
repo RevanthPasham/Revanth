@@ -24,7 +24,7 @@ export const projectsData = [
     ],
     image: "/n8n.webp",
     techStack: ["n8n","Mongodb","Nodejs","Meta Api","Google Api"],
-    github: "https://github.com/RevanthPasham/n8n-workflows",
+    liveLink: "https://github.com/RevanthPasham/n8n-workflows",
   },
   {
     title: "Sweet bytes",
