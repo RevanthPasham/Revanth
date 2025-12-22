@@ -4,14 +4,14 @@ export const experienceData = [
     company: "Heven",
     role: "Mern-Stack Developer",
     duration: "April 2025 – Present",
-    location: "",
+    location: ".",
     logo: "/hevenlogo.webp",
 
     description:
-      "At DealsOfAgro, I’m pioneering the development of a comprehensive agri-commerce platform that transforms how farmers discover, compare, and purchase agricultural machinery.",
+      " Heven is an agri-tech startup focused on revolutionizing Clothing quality access in India through a digital platform that connects users with differnt platforms",
 
     highlights: [
-      "Architected and developed a scalable Next.js application from scratch",
+      "Architected and developed a scalable React.js application from scratch",
       "Designed farmer-friendly UI for low-tech users",
       "Built backend systems for products, users, and dealers",
       "Implemented advanced search and filtering for machinery discovery",
@@ -19,31 +19,32 @@ export const experienceData = [
     ],
 
     technologies: [
-      "Next.js",
-      "TypeScript",
+      "React.js",
+      
       "Tailwind CSS",
       "Node.js",
       "Firebase",
       "Vercel",
+      "mogoDb"
     ],
 
     images: [
-      "/preview/deals/home.png",
-      "/preview/deals/product.png",
-      "/preview/deals/listing.png",
-      "/preview/deals/cart.png",
+      "/heven1.webp",
+      "/heven3.webp",
+      "/heven4.webp"
+      
     ],
 
-    website: "https://dealsofagro.com",
+    website: "https://www.heven.in.net/",
   },
 
   {
     id: 2,
-    company: "AgroTech Labs",
-    role: "Frontend Engineer",
-    duration: "Jan 2024 – Mar 2025",
+    company: "Sweet bytes",
+    role: ".",
+    duration: "2025",
     location: "Remote",
-    logo: "/logos/agrotech.png",
+    logo: "/",
 
     description:
       "Worked on agriculture-focused SaaS dashboards, improving usability, performance, and accessibility.",

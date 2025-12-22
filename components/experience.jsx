@@ -26,7 +26,7 @@ import {
   SiPostman,
 } from "react-icons/si"
 
-/* 🔹 ICON MAP (keys must match your data) */
+/* 🔹 ICON MAP */
 const techIcons = {
   HTML: <FaHtml5 className="text-orange-500" />,
   CSS: <FaCss3Alt className="text-blue-500" />,
@@ -48,6 +48,8 @@ const techIcons = {
 export default function ExperiencePage() {
   const cardsRef = useRef([])
   const [visible, setVisible] = useState([])
+  const [activeSlide, setActiveSlide] = useState(0)
+
 
   /* SCROLL REVEAL */
   useEffect(() => {
@@ -95,10 +97,9 @@ export default function ExperiencePage() {
             ref={(el) => (cardsRef.current[index] = el)}
             data-index={index}
             className={`transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)]
-              ${
-                visible.includes(index)
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-16"
+              ${visible.includes(index)
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-16"
               }`}
           >
             <div className="glass rounded-3xl p-8 md:p-12 shadow-2xl">
@@ -107,15 +108,16 @@ export default function ExperiencePage() {
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
                 <div className="flex items-center gap-5">
                   <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-muted flex items-center justify-center overflow-hidden">
-  <Image
-    src={exp.logo}
-    alt={exp.company}
-    width={64}
-    height={64}
-    className="object-contain w-full h-full p-2"
-    sizes="(max-width: 768px) 56px, 64px"
-  />
-</div>
+                    <Image
+                      src={exp.logo}
+                      alt={exp.company}
+                      width={64}
+                      height={64}
+                      className="object-contain w-full h-full p-2"
+                      sizes="(max-width: 768px) 56px, 64px"
+                    />
+                  </div>
+
                   <div>
                     <h2 className="text-2xl font-bold">{exp.company}</h2>
                     <p className="text-primary">{exp.role}</p>
@@ -147,7 +149,7 @@ export default function ExperiencePage() {
                 ))}
               </ul>
 
-              {/* ✅ TECHNOLOGIES WITH ICONS */}
+              {/* TECHNOLOGIES */}
               <div className="flex flex-wrap gap-4 mb-10">
                 {exp.technologies.map((tech, i) => (
                   <div
@@ -156,12 +158,8 @@ export default function ExperiencePage() {
                                border border-border bg-background/50 backdrop-blur
                                hover:border-primary transition"
                   >
-                    <span className="text-lg">
-                      {techIcons[tech]}
-                    </span>
-                    <span className="text-sm">
-                      {tech}
-                    </span>
+                    <span className="text-lg">{techIcons[tech]}</span>
+                    <span className="text-sm">{tech}</span>
                   </div>
                 ))}
               </div>
@@ -178,36 +176,63 @@ export default function ExperiencePage() {
                     {exp.images.map((img, i) => (
                       <div
                         key={i}
-                        className="rounded-xl overflow-hidden border border-border"
+                        className="relative h-[180px] lg:h-[200px] rounded-xl overflow-hidden border border-border bg-black/20"
                       >
                         <Image
                           src={img}
                           alt={`Preview ${i + 1}`}
-                          width={800}
-                          height={500}
-                          className="object-cover hover:scale-105 transition duration-500"
+                          fill
+                          className="object-contain p-3"
+                          sizes="(max-width: 1024px) 33vw, 300px"
                         />
                       </div>
                     ))}
                   </div>
 
                   {/* MOBILE SLIDER */}
-                  <div className="md:hidden flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
-                    {exp.images.map((img, i) => (
-                      <div
-                        key={i}
-                        className="min-w-[85%] snap-center rounded-xl overflow-hidden border border-border"
-                      >
-                        <Image
-                          src={img}
-                          alt={`Preview ${i + 1}`}
-                          width={800}
-                          height={500}
-                          className="object-cover"
-                        />
-                      </div>
-                    ))}
-                  </div>
+                 {/* MOBILE SLIDER */}
+<div className="md:hidden mt-6">
+  <div
+    className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide"
+    onScroll={(e) => {
+      const scrollLeft = e.target.scrollLeft
+      const width = e.target.firstChild?.clientWidth || 1
+      setActiveSlide(Math.round(scrollLeft / width))
+    }}
+  >
+    {exp.images.map((img, i) => (
+      <div
+        key={i}
+        className="relative min-w-[80%] h-[260px] rounded-xl
+                   overflow-hidden border border-border
+                   bg-black/20 snap-center"
+      >
+        <Image
+          src={img}
+          alt={`Preview ${i + 1}`}
+          fill
+          className="object-contain p-4"
+          sizes="80vw"
+        />
+      </div>
+    ))}
+  </div>
+
+  {/* DOT INDICATORS */}
+  <div className="flex justify-center gap-2 mt-4">
+    {exp.images.map((_, i) => (
+      <span
+        key={i}
+        className={`h-2 w-2 rounded-full transition-all ${
+          activeSlide === i
+            ? "bg-primary scale-110"
+            : "bg-muted"
+        }`}
+      />
+    ))}
+  </div>
+</div>
+
                 </div>
               )}
 
@@ -224,6 +249,7 @@ export default function ExperiencePage() {
                   </a>
                 </div>
               )}
+
             </div>
           </div>
         ))}
