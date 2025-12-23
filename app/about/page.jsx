@@ -72,7 +72,7 @@ export default function page() {
       {/* SOCIAL ICONS */}
       <div className="flex justify-center md:justify-start gap-6 pt-3">
         <a
-          href="www.linkedin.com/in/revanth-pasham-5587052b6"
+          href="https://www.linkedin.com/in/revanth-pasham-5587052b6"
           target="_blank"
           rel="noreferrer"
           className="text-muted-foreground text-2xl hover:text-purple-500 transition"

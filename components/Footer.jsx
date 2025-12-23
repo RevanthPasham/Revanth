@@ -28,11 +28,13 @@ export default function Footer() {
               <Github size={20} />
             </a>
 
-            <a
-              href="www.linkedin.com/in/revanth-pasham-5587052b6"
-              target="_blank"
-              className="hover:text-white transition"
-            >
+          <a
+  href="https://www.linkedin.com/in/revanth-pasham-5587052b6"
+  target="_blank"
+  rel="noreferrer"
+  className="hover:text-white transition"
+>
+
               <Linkedin size={20} />
             </a>
           </div>
