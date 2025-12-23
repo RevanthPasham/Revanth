@@ -25,7 +25,7 @@ export const experienceData = [
     date: "2026 — Present",
     role: "MERN Stack Developer",
     organization: "Deloitte",
-    location: "San Francisco, CA",
+    location: " ",
     description:
       "Leading the development of enterprise-grade web applications, architecting scalable solutions, and mentoring junior developers in modern web technologies.",
     achievements: [
@@ -47,8 +47,8 @@ export const experienceData = [
   {
     date: "2024 — 2025",
     role: "AI Agents Developer",
-    organization: "StartupHub Inc",
-    location: "Austin, TX",
+    organization: " ",
+    location:" ",
     description:
       "Designed and automated intelligent workflows using AI agents and n8n.",
     achievements: [
@@ -69,7 +69,7 @@ export const experienceData = [
   {
     date: "2023 — 2024",
     role: "Data Structures",
-    organization: "Digital Agency Co",
+    organization: " ",
     location: "Remote",
     description:
       "Hands-on experience with Data Structures for optimized problem-solving.",
@@ -86,8 +86,8 @@ export const experienceData = [
   {
     date: "2023 — 2024",
     role: "Frontend Web Developer",
-    organization: "WebDev Studio",
-    location: "New York, NY",
+    organization: " ",
+    location: " ",
     description:
       "Built responsive websites and learned modern frontend practices.",
     achievements: [
