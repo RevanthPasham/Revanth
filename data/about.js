@@ -1,62 +1,105 @@
+
+
+
+import {
+  FaReact,
+  FaNodeJs,
+  FaDocker,
+  FaHtml5,
+  FaCss3Alt,
+  FaJsSquare,
+  FaWordpress,
+  FaPython,
+} from "react-icons/fa"
+
+import {
+  SiMongodb,
+  SiTailwindcss,
+  SiVercel,
+  SiN8N,
+} from "react-icons/si"
+
+
 export const experienceData = [
   {
     date: "2026 — Present",
-    role: " Mern Stack Developer",
-    organization: "delloitr",
+    role: "MERN Stack Developer",
+    organization: "Deloitte",
     location: "San Francisco, CA",
     description:
       "Leading the development of enterprise-grade web applications, architecting scalable solutions, and mentoring junior developers in modern web technologies.",
     achievements: [
-      "Architected and deployed a microservices-based ",
-      "Reduced application load time by 60% through performance optimization",
-      "Implemented CI/CD pipeline reducing deployment time from hours to minutes",
-      "Led a team of 5 developers ",
+      "Architected and deployed a microservices-based system",
+      "Reduced application load time by 60%",
+      "Implemented CI/CD pipelines",
+      "Led a team of 5 developers",
     ],
-    techStack: ["React", "Node.js", "MOngodb", "Docker", "Vercel", "Docker","TailWind"],
+   techStack: [
+  { icon: FaReact, name: "React", color: "text-cyan-400" },
+  { icon: FaNodeJs, name: "Node.js", color: "text-green-500" },
+  { icon: SiMongodb, name: "MongoDB", color: "text-emerald-500" },
+  { icon: FaDocker, name: "Docker", color: "text-sky-400" },
+  { icon: SiVercel, name: "Vercel", color: "text-white" },
+  { icon: SiTailwindcss, name: "Tailwind CSS", color: "text-sky-500" },
+],
   },
+
   {
-    date: "2024-2025",
-    role: "Ai agents",
+    date: "2024 — 2025",
+    role: "AI Agents Developer",
     organization: "StartupHub Inc",
     location: "Austin, TX",
     description:
-      "Worked with AI Agents using n8n to design and automate intelligent workflows, enabling seamless integration between APIs, AI models, and external services. Built agent-driven automations for decision-making, task orchestration, and real-time data processing.",
+      "Designed and automated intelligent workflows using AI agents and n8n.",
     achievements: [
-      "Built 15+ production-ready web applications for diverse clients",
-      "Integrated third-party APIs including payment gateways and social media platforms",
-      "Collaborated with designers to implement pixel-perfect UI components",
-      
+      "Built AI-driven automation workflows",
+      "Integrated APIs and LLMs",
+      "Created real-time decision systems",
     ],
-    techStack: ["n8n","Python","API's"],
+   
+
+    techStack: [
+  { icon: SiN8N, name: "n8n", color: "text-orange-400" },
+  { icon: FaPython, name: "Python", color: "text-yellow-400" },
+  { icon: FaJsSquare, name: "JavaScript", color: "text-yellow-300" },
+],
+
   },
+
   {
-    date: "2023-2024",
-    role: "Data Structres",
+    date: "2023 — 2024",
+    role: "Data Structures",
     organization: "Digital Agency Co",
     location: "Remote",
     description:
-      "Strong understanding and hands-on experience with Data Structures for efficient problem-solving and application optimization.",
+      "Hands-on experience with Data Structures for optimized problem-solving.",
     achievements: [
-      "Developed landing pages with 30%+ conversion rate improvement",
-      "Created reusable component library used across 20+ projects",
-      "Implemented accessibility standards ",
-      "Optimized SEO ",
+      "Improved algorithm efficiency",
+      "Solved complex problems using DSA",
     ],
-    techStack: ["Python"],
+   techStack: [
+  { icon: FaPython, name: "Python", color: "text-yellow-400" },
+],
+
   },
+
   {
     date: "2023 — 2024",
     role: "Frontend Web Developer",
     organization: "WebDev Studio",
     location: "New York, NY",
     description:
-      "Started my professional journey building responsive websites and learning modern web development practices in a collaborative environment.",
+      "Built responsive websites and learned modern frontend practices.",
     achievements: [
-      "Contributed to 10+ client websites using HTML, CSS, and JavaScript",
-      "Learned React and modern JavaScript frameworks",
-      
-      "Participated in code reviews and pair programming sessions",
+      "Worked on 10+ client websites",
+      "Learned React & modern JS",
     ],
-    techStack: ["HTML", "CSS", "JavaScript" , "WordPress"],
+   techStack: [
+  { icon: FaHtml5, name: "HTML5", color: "text-orange-500" },
+  { icon: FaCss3Alt, name: "CSS3", color: "text-blue-500" },
+  { icon: FaJsSquare, name: "JavaScript", color: "text-yellow-300" },
+  { icon: FaWordpress, name: "WordPress", color: "text-sky-500" },
+],
+
   },
 ]

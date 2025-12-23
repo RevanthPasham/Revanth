@@ -1,3 +1,18 @@
+import {
+  FaReact,
+  FaNodeJs,
+  FaJsSquare,
+} from "react-icons/fa"
+
+import {
+  SiTailwindcss,
+  SiFirebase,
+  SiVercel,
+  SiMongodb,
+  SiFigma,
+} from "react-icons/si"
+
+
 export const experienceData = [
   {
     id: 1,
@@ -18,15 +33,14 @@ export const experienceData = [
       "Collaborated with stakeholders to align tech with business goals",
     ],
 
-    technologies: [
-      "React.js",
-      
-      "Tailwind CSS",
-      "Node.js",
-      "Firebase",
-      "Vercel",
-      "mogoDb"
-    ],
+   technologies: [
+  { icon: FaReact, name: "React", color: "text-cyan-400" },
+  { icon: SiTailwindcss, name: "Tailwind CSS", color: "text-sky-500" },
+  { icon: FaNodeJs, name: "Node.js", color: "text-green-500" },
+  { icon: SiFirebase, name: "Firebase", color: "text-yellow-400" },
+  { icon: SiVercel, name: "Vercel", color: "text-white" },
+  { icon: SiMongodb, name: "MongoDB", color: "text-emerald-500" },
+],
 
     images: [
       "/heven1.webp",
@@ -55,13 +69,13 @@ export const experienceData = [
       "Converted Figma designs into production UI",
     ],
 
-    technologies: ["React", "Tailwind CSS", "JavaScript", "Figma"],
+   technologies: [
+  { icon: FaReact, name: "React", color: "text-cyan-400" },
+  { icon: SiTailwindcss, name: "Tailwind CSS", color: "text-sky-500" },
+  { icon: FaJsSquare, name: "JavaScript", color: "text-yellow-300" },
+  { icon: SiFigma, name: "Figma", color: "text-pink-500" },
+],
 
-    images: [
-      "/cake1.webp",
-      "/cake2.webp",
-      "/cake3.webp",
-    ],
 
     website: "https://cakef.vercel.app/",
   },

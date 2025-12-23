@@ -2,46 +2,14 @@
 
 import { useEffect, useRef, useState } from "react"
 import { projectsData } from "@/data/projects"
+import { FaReact, FaNodeJs } from "react-icons/fa"
+import { SiMongodb, SiVercel, SiN8N, SiRazorpay } from "react-icons/si"
 
-/* 🔹 TECH ICONS */
-import {
-  FaHtml5,
-  FaCss3Alt,
-  FaJs,
-  FaReact,
-  FaNodeJs,
-  FaGithub,
-  FaJava,
-} from "react-icons/fa"
-import {
-  SiTypescript,
-  SiNextdotjs,
-  SiTailwindcss,
-  SiMongodb,
-  SiExpress,
-  SiFirebase,
-  SiPython,
-  SiPostman,
-} from "react-icons/si"
 
-/* 🔹 ICON MAP (keys must match project.techStack) */
-const techIcons = {
-  HTML: <FaHtml5 className="text-orange-500" />,
-  CSS: <FaCss3Alt className="text-blue-500" />,
-  JavaScript: <FaJs className="text-yellow-400" />,
-  TypeScript: <SiTypescript className="text-blue-400" />,
-  React: <FaReact className="text-cyan-400" />,
-  "Next.js": <SiNextdotjs />,
-  Tailwind: <SiTailwindcss className="text-sky-400" />,
-  NodeJS: <FaNodeJs className="text-green-500" />,
-  Express: <SiExpress />,
-  MongoDB: <SiMongodb className="text-green-600" />,
-  Firebase: <SiFirebase className="text-yellow-400" />,
-  Python: <SiPython className="text-blue-400" />,
-  Java: <FaJava className="text-red-500" />,
-  GitHub: <FaGithub />,
-  Postman: <SiPostman className="text-orange-500" />,
-}
+
+
+
+
 
 const projectColors = [
   "bg-orange-600",
@@ -127,20 +95,22 @@ function ProjectCard({ project, index, activeIndex, setActiveIndex }) {
           </ul>
 
           {/* ✅ TECH STACK WITH ICONS (DESKTOP) */}
-          <div className="flex flex-wrap gap-3 pt-2">
-            {project.techStack.map((tech, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-2 px-4 py-2 rounded-full
-                           bg-secondary/60 border border-primary/20 text-sm"
-              >
-                <span className="text-lg">
-                  {techIcons[tech]}
-                </span>
-                <span>{tech}</span>
-              </div>
-            ))}
-          </div>
+         <div className="flex flex-wrap gap-3 pt-2">
+  {project.techStack.map((tech, i) => {
+    const Icon = tech.icon
+    return (
+      <div
+        key={i}
+        className="flex items-center gap-2 px-4 py-2 rounded-full
+                   bg-secondary/60 border border-primary/20 text-sm"
+      >
+        <Icon className={`text-lg ${tech.color}`} />
+        <span>{tech.name}</span>
+      </div>
+    )
+  })}
+</div>
+
         </div>
       </div>
 
@@ -161,20 +131,22 @@ function ProjectCard({ project, index, activeIndex, setActiveIndex }) {
         </p>
 
         {/* ✅ TECH STACK WITH ICONS (MOBILE) */}
-        <div className="flex flex-wrap gap-2 mb-3">
-          {project.techStack.map((tech, i) => (
-            <div
-              key={i}
-              className="flex items-center gap-2 px-3 py-1 rounded-full
-                         bg-black/20 text-xs text-white"
-            >
-              <span className="text-base">
-                {techIcons[tech]}
-              </span>
-              <span>{tech}</span>
-            </div>
-          ))}
-        </div>
+      <div className="flex flex-wrap gap-2 mb-3">
+  {project.techStack.map((tech, i) => {
+    const Icon = tech.icon
+    return (
+      <div
+        key={i}
+        className="flex items-center gap-2 px-3 py-1 rounded-full
+                   bg-black/20 text-xs text-white"
+      >
+        <Icon className={`text-base ${tech.color}`} />
+        <span>{tech.name}</span>
+      </div>
+    )
+  })}
+</div>
+
 
         <button
           onClick={() => setShowMore(!showMore)}

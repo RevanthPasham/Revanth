@@ -1,8 +1,11 @@
 "use client"
 
+"use client"
+
 import { useEffect, useRef, useState } from "react"
 import { experienceData } from "@/data/about"
 import { FaGithub, FaLinkedin } from "react-icons/fa"
+
 
 
 export default function AboutHome() {
@@ -210,18 +213,32 @@ export default function AboutHome() {
                 </ul>
               )}
 
-              {exp.techStack?.length > 0 && (
-                <div className="flex flex-wrap gap-3 pt-2">
-                  {exp.techStack.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-4 py-1 text-xs rounded-full border border-muted"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              )}
+
+{exp.techStack?.length > 0 && (
+  <div className="flex flex-wrap gap-4 pt-3">
+    {exp.techStack.map((tech, i) => {
+      const Icon = tech.icon
+      return (
+        <div
+          key={i}
+          title={tech.name}
+          className="flex items-center gap-2 px-4 py-1.5
+                     rounded-full border border-white/10
+                     bg-white/5 backdrop-blur
+                     hover:bg-white/10 transition"
+        >
+          <Icon className={`text-lg ${tech.color}`} />
+          <span className="text-xs text-gray-300">
+            {tech.name}
+          </span>
+        </div>
+      )
+    })}
+  </div>
+)}
+
+
+
             </div>
 
           </div>

@@ -1,3 +1,16 @@
+import { FaReact, FaNodeJs } from "react-icons/fa"
+import {
+  SiMongodb,
+  SiVercel,
+  SiN8N,
+  SiRazorpay,
+  SiGoogle,
+  SiMeta,
+} from "react-icons/si"
+
+
+
+
 export const projectsData = [
   {
     title: "E-Commerce Platform HEVEN",
@@ -9,7 +22,14 @@ export const projectsData = [
       "Mobile-responsive design with progressive web app capabilities",
     ],
     image: "/Heven.webp",
-    techStack: ["React", "Node.js", "Mongodb", "Razzopay", "Nodemailer", "Versel"],
+   techStack: [
+  { icon: FaReact, name: "React", color: "text-cyan-400" },
+  { icon: FaNodeJs, name: "Node.js", color: "text-green-500" },
+  { icon: SiMongodb, name: "MongoDB", color: "text-emerald-500" },
+  { icon: SiRazorpay, name: "Razorpay", color: "text-sky-400" },
+  { icon: SiVercel, name: "Vercel", color: "text-white" },
+],
+
     liveLink: "https://www.heven.in.net/",
   },
   {
@@ -23,7 +43,14 @@ export const projectsData = [
       "Automatic storage of content in MongoDB",
     ],
     image: "/n8n.webp",
-    techStack: ["n8n","Mongodb","Nodejs","Meta Api","Google Api"],
+   techStack: [
+  { icon: SiN8N, name: "n8n", color: "text-orange-400" },
+  { icon: SiMongodb, name: "MongoDB", color: "text-emerald-500" },
+  { icon: FaNodeJs, name: "Node.js", color: "text-green-500" },
+  { icon: SiMeta, name: "Meta API", color: "text-blue-500" },
+  { icon: SiGoogle, name: "Google API", color: "text-red-400" },
+],
+
     liveLink: "https://github.com/RevanthPasham/n8n-workflows",
   },
   {
@@ -37,7 +64,13 @@ export const projectsData = [
       
     ],
     image: "/Cake.webp",
-    techStack: ["React", "MOngoDB", "Node.js",, "Vercel"],
+   techStack: [
+  { icon: FaReact, name: "React", color: "text-cyan-400" },
+  { icon: SiMongodb, name: "MongoDB", color: "text-emerald-500" },
+  { icon: FaNodeJs, name: "Node.js", color: "text-green-500" },
+  { icon: SiVercel, name: "Vercel", color: "text-white" },
+],
+
     liveLink: "https://cakef.vercel.app/",
   },
 ]
