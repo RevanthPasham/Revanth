@@ -24,7 +24,7 @@ export const experienceData = [
   {
     date: "2026 — Present",
     role: "MERN Stack Developer",
-    organization: "Deloitte",
+    organization: ".",
     location: " ",
     description:
       "Leading the development of enterprise-grade web applications, architecting scalable solutions, and mentoring junior developers in modern web technologies.",
