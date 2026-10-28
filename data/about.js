@@ -1,105 +1,144 @@
-
-
-
 import {
   FaReact,
   FaNodeJs,
   FaDocker,
+  FaAws,
   FaHtml5,
   FaCss3Alt,
-  FaJsSquare,
-  FaWordpress,
-  FaPython,
 } from "react-icons/fa"
 
 import {
   SiMongodb,
   SiTailwindcss,
-  SiVercel,
-  SiN8N,
+  SiPostgresql,
+  SiRedis,
+  SiWebrtc,
+  SiDigitalocean,
+  SiExpress,
+  SiJsonwebtokens,
+  SiRazorpay,
+  SiPostman,
+  SiAwslambda,
+  SiGithubactions,
+  SiCpanel,
+  SiLighthouse,
 } from "react-icons/si"
-
 
 export const experienceData = [
   {
-    date: "2026 — Present",
-    role: "MERN Stack Developer",
-    organization: ".",
-    location: " ",
-    description:
-      "Leading the development of enterprise-grade web applications, architecting scalable solutions, and mentoring junior developers in modern web technologies.",
-    achievements: [
-      "Architected and deployed a microservices-based system",
-      "Reduced application load time by 60%",
-      "Implemented CI/CD pipelines",
-      "Led a team of 5 developers",
-    ],
-   techStack: [
-  { icon: FaReact, name: "React", color: "text-cyan-400" },
-  { icon: FaNodeJs, name: "Node.js", color: "text-green-500" },
-  { icon: SiMongodb, name: "MongoDB", color: "text-emerald-500" },
-  { icon: FaDocker, name: "Docker", color: "text-sky-400" },
-  { icon: SiVercel, name: "Vercel", color: "text-white" },
-  { icon: SiTailwindcss, name: "Tailwind CSS", color: "text-sky-500" },
-],
-  },
-
-  {
-    date: "2024 — 2025",
-    role: "AI Agents Developer",
-    organization: " ",
-    location:" ",
-    description:
-      "Designed and automated intelligent workflows using AI agents and n8n.",
-    achievements: [
-      "Built AI-driven automation workflows",
-      "Integrated APIs and LLMs",
-      "Created real-time decision systems",
-    ],
-   
-
-    techStack: [
-  { icon: SiN8N, name: "n8n", color: "text-orange-400" },
-  { icon: FaPython, name: "Python", color: "text-yellow-400" },
-  { icon: FaJsSquare, name: "JavaScript", color: "text-yellow-300" },
-],
-
-  },
-
-  {
-    date: "2023 — 2024",
-    role: "Data Structures",
-    organization: " ",
+    date: "Jan 2026 — Present",
+    role: "Full Stack Developer Intern",
+    organization: "Saketh AI Automation",
     location: "Remote",
     description:
-      "Hands-on experience with Data Structures for optimized problem-solving.",
+      "Architecting a multi-role job platform and AI-driven mock interview system, managing staging/production releases on DigitalOcean with Redis caching and WebRTC real-time pipelines.",
     achievements: [
-      "Improved algorithm efficiency",
-      "Solved complex problems using DSA",
+      "Built a multi-role job portal (Admin, Recruiter, Candidate) using React (TypeScript) on the frontend and Node.js (TypeScript) on the backend, with PostgreSQL hosted on Amazon RDS.",
+      "Deployed and managed staging/production environments on DigitalOcean; played a key role in Git branching strategy, handling staging-to-production merges and production backend releases.",
+      "Improved platform performance and reliability with a CDN for static assets, Redis for caching/session management, and API-level rate limiting.",
+      "Built an automated resume generation feature and an AI-powered mock interview system using WebRTC for real-time video/audio sessions with AI-driven feedback.",
     ],
-   techStack: [
-  { icon: FaPython, name: "Python", color: "text-yellow-400" },
-],
-
+    techStack: [
+      { icon: FaReact, name: "React (TypeScript)", color: "text-cyan-400" },
+      { icon: FaNodeJs, name: "Node.js (TypeScript)", color: "text-green-500" },
+      { icon: SiPostgresql, name: "PostgreSQL", color: "text-blue-400" },
+      { icon: FaAws, name: "Amazon RDS", color: "text-amber-500" },
+      { icon: SiRedis, name: "Redis", color: "text-red-500" },
+      { icon: SiWebrtc, name: "WebRTC", color: "text-emerald-400" },
+      { icon: SiDigitalocean, name: "DigitalOcean", color: "text-blue-500" },
+      { icon: FaDocker, name: "Docker", color: "text-sky-400" },
+    ],
   },
 
   {
-    date: "2023 — 2024",
-    role: "Frontend Web Developer",
-    organization: " ",
-    location: " ",
+    date: "Aug 2025 — Present",
+    role: "MERN Stack Developer",
+    organization: "Heven",
+    location: "Remote (Part-time)",
     description:
-      "Built responsive websites and learned modern frontend practices.",
+      "Developing and scaling full-stack e-commerce and web platforms using the MERN stack, implementing Google OAuth 2.0 & JWT auth workflows and secure Razorpay payment integrations.",
     achievements: [
-      "Worked on 10+ client websites",
-      "Learned React & modern JS",
+      "Developed and maintained a MERN stack web application using React, Node.js, Express, and MongoDB.",
+      "Engineered secure authentication using Google OAuth 2.0 and JWT-based authorization.",
+      "Integrated Razorpay payment gateway to enable secure and reliable online transactions.",
+      "Designed, developed, and tested RESTful APIs for user authentication and payment workflows using Postman.",
     ],
-   techStack: [
-  { icon: FaHtml5, name: "HTML5", color: "text-orange-500" },
-  { icon: FaCss3Alt, name: "CSS3", color: "text-blue-500" },
-  { icon: FaJsSquare, name: "JavaScript", color: "text-yellow-300" },
-  { icon: FaWordpress, name: "WordPress", color: "text-sky-500" },
-],
+    techStack: [
+      { icon: FaReact, name: "React", color: "text-cyan-400" },
+      { icon: SiTailwindcss, name: "Tailwind CSS", color: "text-sky-500" },
+      { icon: FaNodeJs, name: "Node.js", color: "text-green-500" },
+      { icon: SiExpress, name: "Express.js", color: "text-gray-300" },
+      { icon: SiMongodb, name: "MongoDB", color: "text-emerald-500" },
+      { icon: SiJsonwebtokens, name: "JWT Auth", color: "text-purple-400" },
+      { icon: SiRazorpay, name: "Razorpay", color: "text-sky-400" },
+      { icon: SiPostman, name: "Postman", color: "text-orange-500" },
+    ],
+  },
 
+  {
+    date: "Jun 2025 — Present",
+    role: "Web Developer Intern",
+    organization: "Soaron",
+    location: "Internship",
+    description:
+      "End-to-end development and hosting of company web platform on cPanel/HostGator, serverless backend functions on AWS Lambda, SEO optimization, and GitHub Actions CI/CD pipelines.",
+    achievements: [
+      "Developed and deployed a company frontend website, hosted on cPanel (HostGator), handling end-to-end setup from build to live deployment.",
+      "Implemented on-page SEO (meta tags, headings, alt text, sitemap) and built backlinks to improve search visibility and domain authority.",
+      "Deployed serverless backend functions on AWS Lambda to reduce infrastructure overhead and improve scalability.",
+      "Configured CI/CD pipelines using GitHub Actions to automate build, test, and deploy workflows on every push.",
+    ],
+    techStack: [
+      { icon: FaHtml5, name: "HTML5", color: "text-orange-500" },
+      { icon: FaCss3Alt, name: "CSS3", color: "text-blue-500" },
+      { icon: FaReact, name: "React", color: "text-cyan-400" },
+      { icon: SiTailwindcss, name: "Tailwind CSS", color: "text-sky-500" },
+      { icon: SiAwslambda, name: "AWS Lambda", color: "text-amber-500" },
+      { icon: SiGithubactions, name: "GitHub Actions CI/CD", color: "text-blue-400" },
+      { icon: SiCpanel, name: "cPanel / HostGator", color: "text-orange-500" },
+      { icon: SiLighthouse, name: "SEO & Lighthouse", color: "text-yellow-400" },
+    ],
+  },
+]
+
+export const achievementsData = [
+  {
+    id: 1,
+    title: "Top 5 Among 100+ Teams",
+    event: "Coding Squad Competition",
+    organization: "NILR Institute of Technology",
+    year: "2025",
+    badge: "Top 5 Finalist",
+    color: "from-amber-500/20 via-yellow-500/10 to-transparent",
+    borderColor: "border-yellow-500/30",
+    textColor: "text-yellow-400",
+    description:
+      "Secured a Top 5 placement among 100+ competing engineering teams in an intense competitive programming and algorithm hackathon.",
+  },
+  {
+    id: 2,
+    title: "Runner-Up Innovation Award",
+    event: "Micro Project Competition (CIE)",
+    organization: "Centre for Innovation & Entrepreneurship",
+    year: "2025",
+    badge: "Runner-Up",
+    color: "from-purple-500/20 via-pink-500/10 to-transparent",
+    borderColor: "border-purple-500/30",
+    textColor: "text-purple-400",
+    description:
+      "Awarded Runner-up in the prestigious Micro Project Competition for ideating, designing, and building innovative technical solutions.",
+  },
+  {
+    id: 3,
+    title: "Multiple Coding Certifications",
+    event: "Problem Solving & Development",
+    organization: "HackerRank & Global Platforms",
+    year: "2024 — 2025",
+    badge: "Certified",
+    color: "from-cyan-500/20 via-blue-500/10 to-transparent",
+    borderColor: "border-cyan-500/30",
+    textColor: "text-cyan-400",
+    description:
+      "Earned verified certifications across HackerRank and premier coding platforms demonstrating high proficiency in core algorithms, data structures, and web technologies.",
   },
 ]

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="soaronGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f97316" />
+      <stop offset="50%" stop-color="#fb923c" />
+      <stop offset="100%" stop-color="#facc15" />
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="22" fill="#18181b" />
+  <rect x="2" y="2" width="96" height="96" rx="20" fill="none" stroke="url(#soaronGrad)" stroke-width="2" opacity="0.6" />
+  <!-- Soaring Wings / Arrow / S -->
+  <path d="M 28 65 L 50 26 L 72 65 L 50 52 Z" 
+        fill="url(#soaronGrad)" opacity="0.9" stroke="#f97316" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="50" cy="26" r="3" fill="#fff" />
+</svg>

@@ -17,8 +17,8 @@ export const projectsData = [
     description:
       "A modern, full-stack e-commerce solution with real-time inventory management, secure payment processing, and an intuitive admin dashboard.",
     features: [
-      "Integrated payment gateway with Stripe and PayPal support",
-      "Auto recommanded  Algorith With filter Sections",
+      "Integrated payment gateway with secure checkout workflows",
+      "Automated Recommendation Algorithm with Filter Sections",
       "Mobile-responsive design with progressive web app capabilities",
     ],
     image: "/Heven.webp",
@@ -56,12 +56,11 @@ export const projectsData = [
   {
     title: "Sweet bytes",
     description:
-      "A Modern webistes to integrate the Mern Stack Applications.",
+      "A modern web application integrating responsive React components with custom search and advanced filtering.",
     features: [
-      "Responsive for both mobile and desktop Versions",
-      "Search And filter Sections",
-      "Auto Recommended alogorith",
-      
+      "Responsive for both mobile and desktop versions",
+      "Search and advanced filter sections",
+      "Automated recommendation algorithm",
     ],
     image: "/Cake.webp",
    techStack: [

@@ -77,7 +77,7 @@ export default function Footer() {
 
           <div className="space-y-3 text-sm">
             <a
-              href="mailto:talaganarajesh@gmail.com"
+              href="mailto:pashamrevanth541@gmail.com"
               className="flex items-center gap-2 text-blue-400 hover:underline"
             >
               <Mail size={16} />

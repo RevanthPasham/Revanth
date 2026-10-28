@@ -1,109 +1,116 @@
 import {
   FaReact,
   FaNodeJs,
-  FaJsSquare,
+  FaDocker,
+  FaAws,
+  FaHtml5,
+  FaCss3Alt,
 } from "react-icons/fa"
 
 import {
   SiTailwindcss,
-  SiFirebase,
-  SiVercel,
+  SiPostgresql,
   SiMongodb,
-  SiFigma,
+  SiRedis,
+  SiWebrtc,
+  SiDigitalocean,
+  SiExpress,
+  SiJsonwebtokens,
+  SiRazorpay,
+  SiPostman,
+  SiAwslambda,
+  SiGithubactions,
+  SiCpanel,
+  SiLighthouse,
 } from "react-icons/si"
-
 
 export const experienceData = [
   {
     id: 1,
-    company: "Heven",
-    role: "Mern-Stack Developer",
-    duration: "April 2025 – Present",
-    location: ".",
-    logo: "/Hevenlogo.webp",
-
+    company: "Saketh AI Automation",
+    role: "Full Stack Developer Intern",
+    duration: "January 2026 — Present",
+    location: "Remote",
+    logo: "/sakethai.svg",
     description:
-      " Heven is an agri-tech startup focused on revolutionizing Clothing quality access in India through a digital platform that connects users with differnt platforms",
-
+      "Engineered a multi-role job portal and AI-driven platforms, developing end-to-end full-stack architectures with real-time WebRTC mock interview sessions and automated resume generation.",
     highlights: [
-      "Architected and developed a scalable React.js application from scratch",
-      "Designed farmer-friendly UI for low-tech users",
-      "Built backend systems for products, users, and dealers",
-      "Implemented advanced search and filtering for machinery discovery",
-      "Collaborated with stakeholders to align tech with business goals",
+      "Built a multi-role job portal (Admin, Recruiter, Candidate) using React (TypeScript) on the frontend and Node.js (TypeScript) on the backend, with PostgreSQL hosted on Amazon RDS.",
+      "Deployed and managed staging/production environments on DigitalOcean; played a key role in Git branching strategy, handling staging-to-production merges and production backend releases.",
+      "Improved platform performance and reliability with a CDN for static assets, Redis for caching/session management, and API-level rate limiting.",
+      "Built an automated resume generation feature and an AI-powered mock interview system using WebRTC for real-time video/audio sessions with AI-driven feedback.",
     ],
-
-   technologies: [
-  { icon: FaReact, name: "React", color: "text-cyan-400" },
-  { icon: SiTailwindcss, name: "Tailwind CSS", color: "text-sky-500" },
-  { icon: FaNodeJs, name: "Node.js", color: "text-green-500" },
-  { icon: SiFirebase, name: "Firebase", color: "text-yellow-400" },
-  { icon: SiVercel, name: "Vercel", color: "text-white" },
-  { icon: SiMongodb, name: "MongoDB", color: "text-emerald-500" },
-],
-
+    technologies: [
+      { icon: FaReact, name: "React (TypeScript)", color: "text-cyan-400" },
+      { icon: FaNodeJs, name: "Node.js (TypeScript)", color: "text-green-500" },
+      { icon: SiPostgresql, name: "PostgreSQL", color: "text-blue-400" },
+      { icon: FaAws, name: "Amazon RDS", color: "text-amber-500" },
+      { icon: SiRedis, name: "Redis", color: "text-red-500" },
+      { icon: SiWebrtc, name: "WebRTC", color: "text-emerald-400" },
+      { icon: SiDigitalocean, name: "DigitalOcean", color: "text-blue-500" },
+      { icon: FaDocker, name: "Docker", color: "text-sky-400" },
+    ],
+    images: [],
+    website: "",
+  },
+  {
+    id: 2,
+    company: "Heven",
+    role: "MERN Stack Developer",
+    duration: "August 2025 — Present",
+    location: "Remote (Part-time)",
+    logo: "/Hevenlogo.webp",
+    description:
+      "Engineered scalable web applications and e-commerce solutions within the MERN stack ecosystem, architecting secure OAuth/JWT authentication and reliable payment gateway pipelines.",
+    highlights: [
+      "Developed and maintained a MERN stack web application using React, Node.js, Express, and MongoDB.",
+      "Engineered secure authentication using Google OAuth 2.0 and JWT-based authorization.",
+      "Integrated Razorpay payment gateway to enable secure and reliable online transactions.",
+      "Designed, developed, and tested RESTful APIs for user authentication and payment workflows using Postman.",
+    ],
+    technologies: [
+      { icon: FaReact, name: "React", color: "text-cyan-400" },
+      { icon: SiTailwindcss, name: "Tailwind CSS", color: "text-sky-500" },
+      { icon: FaNodeJs, name: "Node.js", color: "text-green-500" },
+      { icon: SiExpress, name: "Express.js", color: "text-gray-300" },
+      { icon: SiMongodb, name: "MongoDB", color: "text-emerald-500" },
+      { icon: SiJsonwebtokens, name: "JWT Auth", color: "text-purple-400" },
+      { icon: SiRazorpay, name: "Razorpay", color: "text-sky-400" },
+      { icon: SiPostman, name: "Postman", color: "text-orange-500" },
+    ],
     images: [
       "/heven1.webp",
       "/heven3.webp",
-      "/heven4.webp"
-      
+      "/heven4.webp",
     ],
-
     website: "https://www.heven.in.net/",
   },
-
   {
-    id: 2,
-    company: "Sweet bytes",
-    role: ".",
-    duration: "2025",
-    location: "Remote",
-    logo: "/sweetbytes.webp",
-
+    id: 3,
+    company: "Soaron",
+    role: "Web Developer Intern",
+    duration: "June 2025 — Present",
+    location: "Internship",
+    logo: "/soaron.svg",
     description:
-      "Worked on A freelance web application with search and Advanced filters.",
-
+      "Spearheaded company frontend web presence hosted on cPanel (HostGator), implemented on-page SEO, deployed serverless AWS Lambda micro-functions, and set up GitHub Actions CI/CD pipelines.",
     highlights: [
-      "Built reusable UI components using React",
-      "Improved Lighthouse performance scores",
-      "Converted Figma designs into production UI",
+      "Developed and deployed a company frontend website, hosted on cPanel (HostGator), handling end-to-end setup from build to live deployment.",
+      "Implemented on-page SEO (meta tags, headings, alt text, sitemap) and built backlinks to improve search visibility and domain authority.",
+      "Deployed serverless backend functions on AWS Lambda to reduce infrastructure overhead and improve scalability.",
+      "Configured CI/CD pipelines using GitHub Actions to automate build, test, and deploy workflows on every push.",
     ],
-
-   technologies: [
-  { icon: FaReact, name: "React", color: "text-cyan-400" },
-  { icon: SiTailwindcss, name: "Tailwind CSS", color: "text-sky-500" },
-  { icon: FaJsSquare, name: "JavaScript", color: "text-yellow-300" },
-  { icon: SiFigma, name: "Figma", color: "text-pink-500" },
-],
-
-
-    website: "https://cakef.vercel.app/",
+    technologies: [
+      { icon: FaHtml5, name: "HTML5", color: "text-orange-500" },
+      { icon: FaCss3Alt, name: "CSS3", color: "text-blue-500" },
+      { icon: FaReact, name: "React", color: "text-cyan-400" },
+      { icon: SiTailwindcss, name: "Tailwind CSS", color: "text-sky-500" },
+      { icon: SiAwslambda, name: "AWS Lambda", color: "text-amber-500" },
+      { icon: SiGithubactions, name: "GitHub Actions CI/CD", color: "text-blue-400" },
+      { icon: SiCpanel, name: "cPanel / HostGator", color: "text-orange-500" },
+      { icon: SiLighthouse, name: "SEO & Lighthouse", color: "text-yellow-400" },
+    ],
+    images: [],
+    website: "",
   },
-
-  // {
-  //   id: 3,
-  //   company: "Freelance",
-  //   role: "Web Developer",
-  //   duration: "2023 – 2024",
-  //   location: "India",
-  //   logo: "/logos/freelance.png",
-
-  //   description:
-  //     "Delivered modern websites and dashboards for startups and individuals with a focus on clean UI and performance.",
-
-  //   highlights: [
-  //     "Built portfolio and business websites",
-  //     "Integrated APIs and authentication",
-  //     "Added animations and responsive layouts",
-  //   ],
-
-  //   technologies: ["Next.js", "React", "CSS", "JavaScript"],
-
-  //   images: [
-  //     "/preview/freelance/site1.png",
-  //     "/preview/freelance/site2.png",
-  //   ],
-
-  //   website: "#",
-  // },
 ]

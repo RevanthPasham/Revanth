@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { experienceData } from "@/data/about"
 import { FaGithub, FaLinkedin } from "react-icons/fa"
+import Achievements from "@/components/Achievements"
 
 
 export default function page() {
@@ -43,7 +44,7 @@ export default function page() {
     <div className="flex justify-center md:justify-end pr-0 lg:pr-4">
       <div className="relative rounded-2xl p-[3px] bg-gradient-to-br from-purple-500 to-pink-500">
         <img
-          src="http://media.gettyimages.com/id/1027987804/vector/error-message.jpg?s=612x612&w=0&k=20&c=Fz3AdQ8XmvUd3WvxwTDy78UgBY488cQ7PtZSiW-E5l4="
+          src="/professional-developer-portrait.png"
           alt="Revanth Pasham"
           className="w-56 h-72 sm:w-64 sm:h-80 object-cover rounded-2xl"
         />
@@ -64,9 +65,9 @@ export default function page() {
       </h1>
 
       <p className="text-muted-foreground leading-7 max-w-xl">
-        I&apos;m a passionate web developer focused on building modern,
-        user-friendly web experiences. I specialize in React, Next.js,
-        and MERN stack applications, while exploring AI agents and automation.
+        I&apos;m a Full Stack &amp; MERN Stack Developer specializing in building scalable web architectures,
+        real-time WebRTC communications, and robust cloud services on AWS &amp; DigitalOcean. Experienced in
+        shipping production-grade platforms with PostgreSQL, MongoDB, Redis caching, and CI/CD automation.
       </p>
 
       {/* SOCIAL ICONS */}
@@ -242,6 +243,9 @@ export default function page() {
     </div>
   </div>
 </section>
+
+      {/* ================= ACHIEVEMENTS ================= */}
+      <Achievements />
 
     </main>
   )

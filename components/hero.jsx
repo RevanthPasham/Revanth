@@ -41,7 +41,12 @@ export default function Hero() {
               text-base sm:text-lg md:text-2xl lg:text-3xl
               min-h-[3em] max-w-[90%]">
               <Typewriter
-                words={["MERN Stack Developer", "AI Agents Builder"]}
+                words={[
+                  "Full Stack Developer",
+                  "MERN Stack Specialist",
+                  "WebRTC & Real-Time Systems",
+                  "Cloud & DevOps Integrator",
+                ]}
                 loop={0}
                 cursor
                 cursorStyle="|"
